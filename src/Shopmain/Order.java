@@ -9,8 +9,9 @@ package Shopmain;
  *
  * @author babos
  */
-public class Order extends javax.swing.JFrame {
+public class Order extends javax.swing.JFrame implements InterOrder{
 
+    private Itemlist<String> selectedItems = new Itemlist<>();
     /**
      * Creates new form NewJFrame
      */
@@ -29,45 +30,38 @@ public class Order extends javax.swing.JFrame {
 
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jCheckBox4 = new javax.swing.JCheckBox();
         jLabel14 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         NameBig = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        PriceBig = new javax.swing.JLabel();
+        TypeBig = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jCheckBox5 = new javax.swing.JCheckBox();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jCheckBox6 = new javax.swing.JCheckBox();
-        jLabel20 = new javax.swing.JLabel();
-        ConfirmOrder = new javax.swing.JButton();
+        fdname1 = new javax.swing.JLabel();
+        fdprice1 = new javax.swing.JLabel();
+        check1 = new javax.swing.JCheckBox();
+        fdtype1 = new javax.swing.JLabel();
+        fdname2 = new javax.swing.JLabel();
+        fdprice2 = new javax.swing.JLabel();
+        check2 = new javax.swing.JCheckBox();
+        fdtype2 = new javax.swing.JLabel();
+        fdname3 = new javax.swing.JLabel();
+        fdprice3 = new javax.swing.JLabel();
+        check3 = new javax.swing.JCheckBox();
+        fdtype3 = new javax.swing.JLabel();
+        fdname4 = new javax.swing.JLabel();
+        fdprice4 = new javax.swing.JLabel();
+        check4 = new javax.swing.JCheckBox();
+        fdtype4 = new javax.swing.JLabel();
+        fdname5 = new javax.swing.JLabel();
+        fdprice5 = new javax.swing.JLabel();
+        check5 = new javax.swing.JCheckBox();
+        fdtype5 = new javax.swing.JLabel();
+        Reset = new javax.swing.JButton();
         ConfirmOrder1 = new javax.swing.JButton();
 
         jLabel12.setText("Fried Fish");
 
         jLabel13.setText("250 baht");
-
-        jCheckBox4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox4ActionPerformed(evt);
-            }
-        });
 
         jLabel14.setText("FriedFood");
 
@@ -79,74 +73,81 @@ public class Order extends javax.swing.JFrame {
         NameBig.setForeground(new java.awt.Color(255, 255, 255));
         NameBig.setText("Name");
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Price");
+        PriceBig.setForeground(new java.awt.Color(255, 255, 255));
+        PriceBig.setText("Price");
 
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Type");
+        TypeBig.setForeground(new java.awt.Color(255, 255, 255));
+        TypeBig.setText("Type");
 
-        jLabel3.setText("Fried Fish");
+        fdname1.setText("Fried Fish");
 
-        jLabel4.setText("250 baht");
+        fdprice1.setText("250 baht");
 
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        check1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                check1ActionPerformed(evt);
             }
         });
 
-        jLabel5.setText("FriedFood");
+        fdtype1.setText("FriedFood");
 
-        jLabel6.setText("Fried Fish");
+        fdname2.setText("Fried Fish");
 
-        jLabel7.setText("250 baht");
+        fdprice2.setText("250 baht");
 
-        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+        check2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox2ActionPerformed(evt);
+                check2ActionPerformed(evt);
             }
         });
 
-        jLabel8.setText("FriedFood");
+        fdtype2.setText("FriedFood");
 
-        jLabel9.setText("Fried Fish");
+        fdname3.setText("Fried Fish");
 
-        jLabel10.setText("250 baht");
+        fdprice3.setText("250 baht");
 
-        jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
+        check3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox3ActionPerformed(evt);
+                check3ActionPerformed(evt);
             }
         });
 
-        jLabel11.setText("FriedFood");
+        fdtype3.setText("FriedFood");
 
-        jLabel15.setText("Fried Fish");
+        fdname4.setText("Fried Fish");
 
-        jLabel16.setText("250 baht");
+        fdprice4.setText("250 baht");
 
-        jCheckBox5.addActionListener(new java.awt.event.ActionListener() {
+        check4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox5ActionPerformed(evt);
+                check4ActionPerformed(evt);
             }
         });
 
-        jLabel17.setText("FriedFood");
+        fdtype4.setText("FriedFood");
 
-        jLabel18.setText("Fried Fish");
+        fdname5.setText("Fried Fish");
 
-        jLabel19.setText("250 baht");
+        fdprice5.setText("250 baht");
 
-        jCheckBox6.addActionListener(new java.awt.event.ActionListener() {
+        check5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox6ActionPerformed(evt);
+                check5ActionPerformed(evt);
             }
         });
 
-        jLabel20.setText("FriedFood");
+        fdtype5.setText("FriedFood");
 
-        ConfirmOrder.setText("Confirm");
+        Reset.setBackground(new java.awt.Color(255, 255, 0));
+        Reset.setText("Reset");
+        Reset.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ResetMouseClicked(evt);
+            }
+        });
 
+        ConfirmOrder1.setBackground(new java.awt.Color(0, 255, 51));
         ConfirmOrder1.setText("Confirm");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -157,53 +158,53 @@ public class Order extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jCheckBox1)
+                        .addComponent(check1)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(NameBig)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(fdname1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(69, 69, 69)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel4)))
+                            .addComponent(PriceBig)
+                            .addComponent(fdprice1)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jCheckBox2)
+                        .addComponent(check2)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(fdname2, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(69, 69, 69)
-                        .addComponent(jLabel7))
+                        .addComponent(fdprice2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jCheckBox3)
+                        .addComponent(check3)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(fdname3, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(69, 69, 69)
-                        .addComponent(jLabel10))
+                        .addComponent(fdprice3))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jCheckBox5)
+                        .addComponent(check4)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(fdname4, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(69, 69, 69)
-                        .addComponent(jLabel16))
+                        .addComponent(fdprice4))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jCheckBox6)
+                        .addComponent(check5)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(fdname5, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(69, 69, 69)
-                        .addComponent(jLabel19)))
+                        .addComponent(fdprice5)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel17)
-                    .addComponent(jLabel20))
+                    .addComponent(TypeBig)
+                    .addComponent(fdtype1)
+                    .addComponent(fdtype2)
+                    .addComponent(fdtype3)
+                    .addComponent(fdtype4)
+                    .addComponent(fdtype5))
                 .addGap(46, 46, 46))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ConfirmOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Reset, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(ConfirmOrder1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -214,48 +215,48 @@ public class Order extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NameBig)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                    .addComponent(PriceBig)
+                    .addComponent(TypeBig))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(check1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
-                        .addComponent(jLabel4)
-                        .addComponent(jLabel5)))
+                        .addComponent(fdname1)
+                        .addComponent(fdprice1)
+                        .addComponent(fdtype1)))
                 .addGap(46, 46, 46)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(check2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6)
-                        .addComponent(jLabel7)
-                        .addComponent(jLabel8)))
+                        .addComponent(fdname2)
+                        .addComponent(fdprice2)
+                        .addComponent(fdtype2)))
                 .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(check3, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel9)
-                        .addComponent(jLabel10)
-                        .addComponent(jLabel11)))
+                        .addComponent(fdname3)
+                        .addComponent(fdprice3)
+                        .addComponent(fdtype3)))
                 .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox5, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(check4, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel15)
-                        .addComponent(jLabel16)
-                        .addComponent(jLabel17)))
+                        .addComponent(fdname4)
+                        .addComponent(fdprice4)
+                        .addComponent(fdtype4)))
                 .addGap(55, 55, 55)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox6, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(check5, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel18)
-                        .addComponent(jLabel19)
-                        .addComponent(jLabel20)))
+                        .addComponent(fdname5)
+                        .addComponent(fdprice5)
+                        .addComponent(fdtype5)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ConfirmOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Reset, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ConfirmOrder1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
@@ -279,30 +280,39 @@ public class Order extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void check1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_check1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_check1ActionPerformed
 
-    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+    private void check2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_check2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox2ActionPerformed
+    }//GEN-LAST:event_check2ActionPerformed
 
-    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
+    private void check3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_check3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox3ActionPerformed
+    }//GEN-LAST:event_check3ActionPerformed
 
-    private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
+    private void check4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_check4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox4ActionPerformed
+    }//GEN-LAST:event_check4ActionPerformed
 
-    private void jCheckBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox5ActionPerformed
+    private void check5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_check5ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox5ActionPerformed
+    }//GEN-LAST:event_check5ActionPerformed
 
-    private void jCheckBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox6ActionPerformed
+    private void ResetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ResetMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox6ActionPerformed
-
+        
+    }//GEN-LAST:event_ResetMouseClicked
+    private void ConfirmOrderActionPerformed(java.awt.event.ActionEvent evt) {
+        // Check which items are selected and add them to the ArrayList
+        if (check1.isSelected()) {
+            selectedItems.add("Fried Fish");
+        }
+        if (check2.isSelected()) {
+            selectedItems.add("Another Item");
+            // Add other items in a similar way
+        }
     /**
      * @param args the command line arguments
      */
@@ -339,36 +349,46 @@ public class Order extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ConfirmOrder;
     private javax.swing.JButton ConfirmOrder1;
     private javax.swing.JLabel NameBig;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JCheckBox jCheckBox5;
-    private javax.swing.JCheckBox jCheckBox6;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel PriceBig;
+    private javax.swing.JButton Reset;
+    private javax.swing.JLabel TypeBig;
+    private javax.swing.JCheckBox check1;
+    private javax.swing.JCheckBox check2;
+    private javax.swing.JCheckBox check3;
+    private javax.swing.JCheckBox check4;
+    private javax.swing.JCheckBox check5;
+    private javax.swing.JLabel fdname1;
+    private javax.swing.JLabel fdname2;
+    private javax.swing.JLabel fdname3;
+    private javax.swing.JLabel fdname4;
+    private javax.swing.JLabel fdname5;
+    private javax.swing.JLabel fdprice1;
+    private javax.swing.JLabel fdprice2;
+    private javax.swing.JLabel fdprice3;
+    private javax.swing.JLabel fdprice4;
+    private javax.swing.JLabel fdprice5;
+    private javax.swing.JLabel fdtype1;
+    private javax.swing.JLabel fdtype2;
+    private javax.swing.JLabel fdtype3;
+    private javax.swing.JLabel fdtype4;
+    private javax.swing.JLabel fdtype5;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+        private static class Itemlist<T> {
+
+        public Itemlist() {
+        }
+
+        private void add(String fried_Fish) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+    }    
+    
 }
