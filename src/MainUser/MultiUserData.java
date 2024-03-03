@@ -39,4 +39,8 @@ public class MultiUserData {
             }
         return null;
     }
+    
+    public void RemoveSelectuser(String name){
+        UserData.remove(UserData.indexOf(getSelectuser(name)));
+    }
 }

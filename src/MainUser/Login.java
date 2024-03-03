@@ -222,7 +222,6 @@ public class Login extends javax.swing.JFrame implements Userdata{
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField Password;
     private javax.swing.JLabel ShowError;
