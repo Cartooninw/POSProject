@@ -146,8 +146,11 @@ public class Login extends javax.swing.JFrame implements Userdata{
             if ((null != Data.getSelectuser(Usernameinput)) && (Data.getSelectuser(Usernameinput).getPassword().equals(Passwordinput))) {
                 ShowError.setText("");
                 if (Data.getSelectuser(Usernameinput).getPermission().equals("admin")) {
-                    
-                }
+                    MultiUserManager manage = new MultiUserManager();
+                        manage.setLocationRelativeTo(this);
+                        manage.setVisible(true);
+                        this.dispose();
+                }   
                 
                //space for shopinterface
                

@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * @author cart
  */
 public class MultiUserData {
-    ArrayList<User> UserData = new ArrayList<>();
+    protected ArrayList<User> UserData = new ArrayList<>();
     public void addUser(String name,String Password) {
         User newuser = new User();
         newuser.setUsername(name);
