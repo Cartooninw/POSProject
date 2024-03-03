@@ -217,7 +217,7 @@ public class Login extends javax.swing.JFrame implements Userdata{
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Data.createadmin() ;
+                Data.createadmin();
                 new Login().setVisible(true);
             }
         });
