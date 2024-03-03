@@ -17,9 +17,19 @@ public class MultiUserData {
         newuser.setPassword(Password);
         newuser.setPoint(0);
         newuser.setMoney(0);
+        newuser.setPermission("Customer");
         this.UserData.add(newuser);
     }
     
+    public void createadmin() {
+        User admin = new User();
+        admin.setUsername("admin");
+        admin.setPassword("admin");
+        admin.setPoint(9999);
+        admin.setMoney(9999);
+        admin.setPermission("admin");
+        this.UserData.add(admin);
+    }
     public User getSelectuser(String name) {
         for (User A : UserData) {
             if (A.getUsername().equals(name)) {

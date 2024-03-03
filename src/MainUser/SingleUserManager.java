@@ -8,12 +8,12 @@ package MainUser;
  *
  * @author cart
  */
-public class UserManager implements Userdata{
+public class SingleUserManager implements Userdata{
     public String Username;
     User Userdata = Data.getSelectuser(this.Username);
     private double Usermoney = Userdata.getMoney();
     private double Userpoint = Userdata.getPoint();
-    public UserManager(String Username) {
+    public SingleUserManager(String Username) {
         this.Username = Username;
     }
 

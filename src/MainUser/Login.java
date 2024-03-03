@@ -13,6 +13,7 @@ public class Login extends javax.swing.JFrame implements Userdata{
 
     public Login() {
         initComponents();
+        
     }
 
     /**
@@ -141,13 +142,22 @@ public class Login extends javax.swing.JFrame implements Userdata{
         // TODO add your handling code here:
         String Usernameinput = Username.getText();
         String Passwordinput = Password.getText();
-        
-        if ((null != Data.getSelectuser(Usernameinput)) && (Data.getSelectuser(Usernameinput).getPassword().equals(Passwordinput))) {
-            ShowError.setText("");
-            //space for shopinterface
+        if(!(Usernameinput.equals("")) && !(Passwordinput.equals(""))) {
+            if ((null != Data.getSelectuser(Usernameinput)) && (Data.getSelectuser(Usernameinput).getPassword().equals(Passwordinput))) {
+                ShowError.setText("");
+                if (Data.getSelectuser(Usernameinput).getPermission().equals("admin")) {
+                    
+                }
+                
+               //space for shopinterface
+               
+           } else {
+                 ShowError.setText("You just enter worng Username or Password!");
+           }
         } else {
-            ShowError.setText("You just enter worng Username or Password!");
+            ShowError.setText("Please fill all the information");
         }
+       
         
         
     }//GEN-LAST:event_toLoginActionPerformed
@@ -155,7 +165,9 @@ public class Login extends javax.swing.JFrame implements Userdata{
     private void ToRegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ToRegisterMouseClicked
         // TODO add your handling code here:
         Register newacc = new Register();
+        newacc.setLocationRelativeTo(this);
         newacc.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_ToRegisterMouseClicked
 
     private void PasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordActionPerformed
@@ -202,6 +214,7 @@ public class Login extends javax.swing.JFrame implements Userdata{
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                Data.createadmin() ;
                 new Login().setVisible(true);
             }
         });

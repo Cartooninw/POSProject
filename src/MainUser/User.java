@@ -14,8 +14,17 @@ public class User {
     private String password ;
     private double point;
     private double money;
+    private String Permission;
 
     public User(){};
+
+    public String getPermission() {
+        return Permission;
+    }
+
+    protected void setPermission(String Permission) {
+        this.Permission = Permission;
+    }
         
     public String getUsername() {
         return Username;
@@ -33,11 +42,11 @@ public class User {
         this.Username = Username;
     }
 
-    public void setPassword(String password) {
+    protected void setPassword(String password) {
         this.password = password;
     }
 
-    public void setPoint(double point) {
+    protected void setPoint(double point) {
         this.point = point;
     }
 
@@ -45,7 +54,7 @@ public class User {
         return money;
     }
 
-    public void setMoney(double money) {
+    protected void setMoney(double money) {
         this.money = money;
     }
     

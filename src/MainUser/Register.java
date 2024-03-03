@@ -161,12 +161,21 @@ public class Register extends javax.swing.JFrame implements Userdata{
     private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
         // TODO add your handling code here:
         System.out.println( null == Data.getSelectuser(Username.getText()) );
-        if (  null == Data.getSelectuser(Username.getText())   ) {
-            if(Password.getText().equals(CPassword.getText())) {
-            ShowError1.setText("");
-            Data.addUser(Username.getText(),Password.getText()); 
+        if (  null == Data.getSelectuser(Username.getText()) ) {
+            if (!(Username.getText().equals("")) && !(Password.getText().equals(""))){
+                
+                if(Password.getText().equals(CPassword.getText())) {
+                    ShowError1.setText("");
+                    Data.addUser(Username.getText(),Password.getText()); 
+                    Login tologin = new Login();
+                    tologin.setLocationRelativeTo(this);
+                    tologin.setVisible(true);
+                    this.dispose();
+                } else {
+                        ShowError1.setText("Password doesn't match each others");
+                }
             } else {
-                    ShowError1.setText("Password doesn't match each others");
+                ShowError1.setText("Please fill all the information");
             }
         } else {
                 ShowError1.setText("Already have Username "+ Username.getText());
@@ -185,7 +194,9 @@ public class Register extends javax.swing.JFrame implements Userdata{
     private void ToLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ToLoginMouseClicked
         // TODO add your handling code here:
         Login toacc = new Login();
+        toacc.setLocationRelativeTo(this);
         toacc.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_ToLoginMouseClicked
 
     /**
