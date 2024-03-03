@@ -10,8 +10,6 @@ package Shopmain;
  * @author babos
  */
 public class Order extends javax.swing.JFrame implements InterOrder{
-
-    private Itemlist<String> selectedItems = new Itemlist<>();
     /**
      * Creates new form NewJFrame
      */
@@ -149,6 +147,11 @@ public class Order extends javax.swing.JFrame implements InterOrder{
 
         ConfirmOrder1.setBackground(new java.awt.Color(0, 255, 51));
         ConfirmOrder1.setText("Confirm");
+        ConfirmOrder1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConfirmOrder1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -304,6 +307,10 @@ public class Order extends javax.swing.JFrame implements InterOrder{
         // TODO add your handling code here:
         
     }//GEN-LAST:event_ResetMouseClicked
+
+    private void ConfirmOrder1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmOrder1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ConfirmOrder1ActionPerformed
     private void ConfirmOrderActionPerformed(java.awt.event.ActionEvent evt) {
         // Check which items are selected and add them to the ArrayList
         if (check1.isSelected()) {
@@ -381,13 +388,6 @@ public class Order extends javax.swing.JFrame implements InterOrder{
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
-        private static class Itemlist<T> {
-
-        public Itemlist() {
-        }
-
-        private void add(String fried_Fish) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
     }    
     

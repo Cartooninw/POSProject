@@ -11,10 +11,11 @@ package Shopmain;
  */
 public interface InterOrder {
     
-//    private static class Itemlist<T> {
-//
-//        public Itemlist() {
-//        }
-//    }    
+    public Itemlist<String> selectedItems = new Itemlist<>();
+    public class Itemlist<T> {
+
+       public Itemlist() {
+       }
+    }    
     
 }
