@@ -8,11 +8,13 @@ package MainUser;
  *
  * @author cart
  */
-public class Userinterface extends javax.swing.JFrame {
+public class Userinterface extends javax.swing.JFrame  implements Userdata{
 
-    /**
-     * Creates new form Userinterface
-     */
+    public void showinfo(User user) {
+        Balance.setText("Your Balance is: "+ user.getUsername());
+        Point.setText("Your Point is: "+ user.getPoint());
+    }
+    
     public Userinterface() {
         initComponents();
     }
@@ -27,26 +29,27 @@ public class Userinterface extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        Point = new javax.swing.JLabel();
+        Balance = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(255, 255, 153));
+        setAlwaysOnTop(true);
+        setBackground(new java.awt.Color(0, 204, 204));
 
         jLabel1.setBackground(new java.awt.Color(255, 204, 204));
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         jLabel1.setText("Hello, Username ");
         jLabel1.setOpaque(true);
 
-        jLabel2.setBackground(new java.awt.Color(255, 204, 102));
-        jLabel2.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
-        jLabel2.setText("Your Points is :");
-        jLabel2.setOpaque(true);
+        Point.setBackground(new java.awt.Color(255, 204, 102));
+        Point.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
+        Point.setText("Your Points is :");
+        Point.setOpaque(true);
 
-        jLabel3.setBackground(new java.awt.Color(255, 204, 102));
-        jLabel3.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
-        jLabel3.setText("Your Balance is :");
-        jLabel3.setOpaque(true);
+        Balance.setBackground(new java.awt.Color(255, 204, 102));
+        Balance.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
+        Balance.setText("Your Balance is :");
+        Balance.setOpaque(true);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -56,19 +59,19 @@ public class Userinterface extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Balance, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Point, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(39, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addContainerGap(59, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(Balance, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(73, 73, 73)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Point, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(147, 147, 147))
         );
 
@@ -111,8 +114,8 @@ public class Userinterface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Balance;
+    private javax.swing.JLabel Point;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }
