@@ -13,7 +13,10 @@ public class User {
     public String Username ;
     private String password ;
     private double point;
+    private double money;
 
+    public User(){};
+        
     public String getUsername() {
         return Username;
     }
@@ -36,6 +39,14 @@ public class User {
 
     public void setPoint(double point) {
         this.point = point;
+    }
+
+    public double getMoney() {
+        return money;
+    }
+
+    public void setMoney(double money) {
+        this.money = money;
     }
     
     
