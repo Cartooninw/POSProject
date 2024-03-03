@@ -11,12 +11,12 @@ import java.util.ArrayList;
  */
 public class MultiUserData {
     ArrayList<User> UserData = new ArrayList<>();
-    public void addUser(String name,String Password, double money) {
+    public void addUser(String name,String Password) {
         User newuser = new User();
         newuser.setUsername(name);
         newuser.setPassword(Password);
         newuser.setPoint(0);
-        newuser.setMoney(money);
+        newuser.setMoney(0);
         this.UserData.add(newuser);
     }
     
