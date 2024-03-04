@@ -317,7 +317,7 @@ public class Order extends javax.swing.JFrame implements InterOrder{
             selectedItems.add("Fried Fish");
         }
         if (check2.isSelected()) {
-            selectedItems.add("Another Item");
+            selectedItems.add("another");
             // Add other items in a similar way
         }
     /**
