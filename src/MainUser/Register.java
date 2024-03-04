@@ -15,6 +15,7 @@ public class Register extends javax.swing.JFrame implements Userdata{
     /** Creates new form Register */
     public Register() {
         initComponents();
+        this.getRootPane().setDefaultButton(Register);
     }
 
     /** This method is called from within the constructor to

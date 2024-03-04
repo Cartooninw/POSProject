@@ -1,5 +1,7 @@
 package MainUser;
 
+import java.awt.event.KeyEvent;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -13,7 +15,8 @@ public class Login extends javax.swing.JFrame implements Userdata{
 
     public Login() {
         initComponents();
-        
+        this.getRootPane().setDefaultButton(toLogin);
+
     }
 
     /**
@@ -54,6 +57,14 @@ public class Login extends javax.swing.JFrame implements Userdata{
                 toLoginActionPerformed(evt);
             }
         });
+        toLogin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                toLoginKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                toLoginKeyReleased(evt);
+            }
+        });
 
         ToRegister.setForeground(new java.awt.Color(51, 204, 255));
         ToRegister.setText("Don't have an account?");
@@ -72,6 +83,11 @@ public class Login extends javax.swing.JFrame implements Userdata{
         Password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PasswordActionPerformed(evt);
+            }
+        });
+        Password.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PasswordKeyPressed(evt);
             }
         });
 
@@ -140,6 +156,7 @@ public class Login extends javax.swing.JFrame implements Userdata{
 
     private void toLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toLoginActionPerformed
         // TODO add your handling code here:
+        
         String Usernameinput = Username.getText();
         String Passwordinput = Password.getText();
         if(!(Usernameinput.equals("")) && !(Passwordinput.equals(""))) {
@@ -185,6 +202,64 @@ public class Login extends javax.swing.JFrame implements Userdata{
             Password.setEchoChar('*');
         }
     }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void toLoginKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_toLoginKeyReleased
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_toLoginKeyReleased
+
+    private void toLoginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_toLoginKeyPressed
+        // TODO add your handling code here:
+//        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+//             String Usernameinput = Username.getText();
+//        String Passwordinput = Password.getText();
+//        if(!(Usernameinput.equals("")) && !(Passwordinput.equals(""))) {
+//            if ((null != Data.getSelectuser(Usernameinput)) && (Data.getSelectuser(Usernameinput).getPassword().equals(Passwordinput))) {
+//                ShowError.setText("");
+//                if (Data.getSelectuser(Usernameinput).getPermission().equals("admin")) {
+//                    MultiUserManager manage = new MultiUserManager();
+//                        manage.setLocationRelativeTo(this);
+//                        manage.setVisible(true);
+//                        this.dispose();
+//                }   
+//                
+//               //space for shopinterface
+//               
+//           } else {
+//                 ShowError.setText("You just enter worng Username or Password!");
+//           }
+//        } else {
+//            ShowError.setText("Please fill all the information");
+//        }
+//        }
+    }//GEN-LAST:event_toLoginKeyPressed
+
+    private void PasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PasswordKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+             String Usernameinput = Username.getText();
+        String Passwordinput = Password.getText();
+        if(!(Usernameinput.equals("")) && !(Passwordinput.equals(""))) {
+            if ((null != Data.getSelectuser(Usernameinput)) && (Data.getSelectuser(Usernameinput).getPassword().equals(Passwordinput))) {
+                ShowError.setText("");
+                if (Data.getSelectuser(Usernameinput).getPermission().equals("admin")) {
+                    MultiUserManager manage = new MultiUserManager();
+                        manage.setLocationRelativeTo(this);
+                        manage.setVisible(true);
+                        this.dispose();
+                }   
+                
+               //space for shopinterface
+               
+           } else {
+                 ShowError.setText("You just enter worng Username or Password!");
+           }
+        } else {
+            ShowError.setText("Please fill all the information");
+        }
+       
+        }
+    }//GEN-LAST:event_PasswordKeyPressed
 
     /**
      * @param args the command line arguments
