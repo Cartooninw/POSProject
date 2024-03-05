@@ -11,26 +11,33 @@ package Shopmain;
  */
 public class SeaFood extends Menu{
 
+    
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public void setName(String name) {
         this.name = name;
     }
 
+    @Override
     public Double getPrice() {
         return price;
     }
 
+    @Override
     public void setPrice(Double price) {
         this.price = price;
     }
 
+    @Override
     public String getType() {
         return type;
     }
 
+    @Override
     public void setType(String type) {
         this.type = type;
     }

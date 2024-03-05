@@ -13,6 +13,7 @@ public abstract class Menu {
     public String name;
     public Double price;
     public String type;
+    
 
     public String getName() {
         return name;

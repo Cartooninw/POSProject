@@ -5,15 +5,18 @@
  */
 package Shopmain;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author babos
  */
-public interface InterOrder {
-    
-    ArrayList<AllFood> selectedItems = new ArrayList<>();
+public class AllFood {
+    String type; 
 
-    public void addSelectedItem(AllFood selectedItem);
+    public AllFood(String name,Double price,String type) {
+        this.name;
+        this.price;
+        String type1 = this.type;
+    }
+    if type1 = 
+    
 }
