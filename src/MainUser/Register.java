@@ -190,6 +190,15 @@ public class Register extends javax.swing.JFrame implements Userdata{
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
+        if (jCheckBox1.isSelected()) {
+            Password.setEchoChar((char)0);
+            CPassword.setEchoChar((char)0);
+
+        } else {
+            Password.setEchoChar('*');
+            CPassword.setEchoChar('*');
+
+        }
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void ToLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ToLoginMouseClicked

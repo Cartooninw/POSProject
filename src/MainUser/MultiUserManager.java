@@ -65,9 +65,16 @@ public class MultiUserManager extends javax.swing.JFrame implements Userdata{
                 "username", "Password", "Point", "Balance", "Permission"
             }
         ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, true
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -217,12 +224,13 @@ public class MultiUserManager extends javax.swing.JFrame implements Userdata{
         // TODO add your handling code here:
         DefaultTableModel Datashow = (DefaultTableModel) ShowData.getModel();
         int select = ShowData.getSelectedRow();
+        String test = Datashow.getValueAt(select, 4).toString() ;
         if (select != -1) {
             String Username = Datashow.getValueAt(select,0).toString();
-             if (Datashow.getValueAt(select, 4) != "admin") {
-                Data.RemoveSelectuser(Username);
+             if (!("admin".equals(test))) {
+                 Data.RemoveSelectuser(Username);
                 Datashow.removeRow(select);
-//                Datashow.fireTableDataChanged();
+                Datashow.fireTableDataChanged();
             } else {
                  Error.setText("You don't have Permission to delete this account.");
             }
@@ -240,7 +248,7 @@ public class MultiUserManager extends javax.swing.JFrame implements Userdata{
         User user = Data.getSelectuser(Datashow.getValueAt(select, 0).toString());
         user.setPermission(Permission.getText());
         Datashow.setValueAt(Permission.getText(), select, 4);
-//        Datashow.fireTableDataChanged();
+       Datashow.fireTableDataChanged();
     }//GEN-LAST:event_btnpermissionActionPerformed
 
     /**

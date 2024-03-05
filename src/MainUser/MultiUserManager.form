@@ -146,7 +146,7 @@
                 <Column editable="false" title="Password" type="java.lang.Object"/>
                 <Column editable="false" title="Point" type="java.lang.Object"/>
                 <Column editable="false" title="Balance" type="java.lang.Object"/>
-                <Column editable="true" title="Permission" type="java.lang.Object"/>
+                <Column editable="false" title="Permission" type="java.lang.String"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
