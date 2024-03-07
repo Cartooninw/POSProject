@@ -215,7 +215,7 @@ public class MultiUserManager extends javax.swing.JFrame implements Userdata{
         // TODO add your handling code here:
         DefaultTableModel Datashow = (DefaultTableModel) ShowData.getModel();
         TableRowSorter<DefaultTableModel>  obj = new TableRowSorter<>(Datashow);
-        obj.setRowFilter(RowFilter.regexFilter(Search.getText()));
+        obj.setRowFilter(RowFilter.regexFilter(Search.getText(),0));
         ShowData.setRowSorter(obj);
 
     }//GEN-LAST:event_SearchKeyReleased
