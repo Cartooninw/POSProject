@@ -9,12 +9,12 @@ package Shopmain;
  *
  * @author babos
  */
-public class Menusum extends javax.swing.JFrame {
+public class MenuSummary extends javax.swing.JFrame {
 
     /**
      * Creates new form NewJFrame
      */
-    public Menusum() {
+    public MenuSummary() {
         initComponents();
     }
 
@@ -162,7 +162,7 @@ public class Menusum extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Menusum().setVisible(true);
+                new MenuSummary().setVisible(true);
             }
         });
     }

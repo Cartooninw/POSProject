@@ -14,7 +14,9 @@ public abstract class Menu {
     public Double price;
     public String type;
     
-
+    public abstract void discout();
+    
+    
     public String getName() {
         return name;
     }
