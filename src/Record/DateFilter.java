@@ -1,8 +1,8 @@
 package Record;
 import javax.swing.RowFilter;
 import javax.swing.table.TableModel;
-
-public class DateFilter extends RowFilter<TableModel, Integer> {
+import java.util.ArrayList;
+public class DateFilter extends RowFilter {
     private String searchYear;
     private String searchMonth;
     private String searchDay;
@@ -14,23 +14,30 @@ public class DateFilter extends RowFilter<TableModel, Integer> {
     }
 
     @Override
-    public boolean include(Entry<? extends TableModel, ? extends Integer> entry) {
-        // Assuming column 0 represents the date in "yy/mm/dd" format
+    public boolean include(Entry entry) {
         String dateInCell = entry.getStringValue(3);
 
         // Split the date into year, month, and day
-        String[] parts = dateInCell.split("/");
-        System.out.println(parts[0]+" "+parts[1]+" "+parts[2]);
-        String cellYear = parts[0];
-        String cellMonth = parts[1];
-        String cellDay = parts[2];
+        ArrayList<String> myA = new ArrayList<>();
+        
+        System.out.println(dateInCell);
+        myA.add(dateInCell.split("/")[0]);
+        System.out.println(dateInCell.split("/")[0]);
+        myA.add(dateInCell.split("/")[1]);
+        System.out.println(dateInCell.split("/")[1]);
 
-        // Check if the year, month, and day match the search criteria
-        boolean yearMatches = searchYear.isEmpty() || cellYear.equals(searchYear);
-        boolean monthMatches = searchMonth.isEmpty() || cellMonth.equals(searchMonth);
-        boolean dayMatches = searchDay.isEmpty() || cellDay.equals(searchDay);
+        myA.add(dateInCell.split("/")[2]);
+        System.out.println(dateInCell.split("/")[2]);
 
-        // Return true if all the criteria match
+//        System.out.println(myA.get(0)+" "+ " "+dateInCell+ " "+myA);//+" "+parts[2] (debug)
+        String cellYear = myA.get(0);
+        String cellMonth = myA.get(1);
+        String cellDay = myA.get(2);
+
+        boolean yearMatches = searchYear.isEmpty() || cellYear.contains(searchYear);
+        boolean monthMatches = searchMonth.isEmpty() || cellMonth.contains(searchMonth);
+        boolean dayMatches = searchDay.isEmpty() || cellDay.contains(searchDay);
+
         return yearMatches && monthMatches && dayMatches;
     }
 }

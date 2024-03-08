@@ -4,6 +4,7 @@
  */
 package Record;
 
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import javax.swing.table.RowSorter;
@@ -19,9 +20,10 @@ public class DateSearch extends javax.swing.JFrame {
      */
     
 //    shopbill Bill  
-    
+    DefaultTableModel baseModel ;
     public DateSearch() {
         initComponents();
+        this.baseModel = (DefaultTableModel) orderrecord.getModel();
     }
 
     /**
@@ -50,10 +52,9 @@ public class DateSearch extends javax.swing.JFrame {
 
         orderrecord.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, "2567/25/12"},
-                {null, null, null, "1111/23/64"},
-                {null, null, null, "9999/99/99"},
-                {null, null, null, null}
+                {"aar", null, null, "2566/12/27"},
+                {"bbh", null, null, "1998/05/12"},
+                {"ccd", null, null, "2555/05/15"}
             },
             new String [] {
                 "Username", "Items", "Total", "Date"
@@ -106,6 +107,11 @@ public class DateSearch extends javax.swing.JFrame {
         });
 
         User.setForeground(new java.awt.Color(153, 153, 153));
+        User.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                UserKeyReleased(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 48)); // NOI18N
         jLabel1.setText("Search Record");
@@ -185,8 +191,8 @@ public class DateSearch extends javax.swing.JFrame {
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(User, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(35, 35, 35)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -206,24 +212,65 @@ public class DateSearch extends javax.swing.JFrame {
     }//GEN-LAST:event_yearActionPerformed
 
     private void dayKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dayKeyReleased
-        // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel) orderrecord.getModel();
+        String years = year.getText();
+        String mouths = mouth.getText();
+        String days = day.getText();
         TableRowSorter Sort = new TableRowSorter<>(model);
-        orderrecord.setRowSorter(Sort);
-        String years = year.getText().toString();
-        String mouths = mouth.getText().toString();
-        String days = day.getText().toString();
+//        for (int row = 0; row < model.getRowCount(); row++) {
+//            String valueget = model.getValueAt(row, 3).toString();
+//            String[] datedata = valueget.split("/");
+//                Sort.setRowFilter();
+//
+//        }
         Sort.setRowFilter(new DateFilter(years,mouths,days));
+        orderrecord.setRowSorter(Sort);
+        
         
     }//GEN-LAST:event_dayKeyReleased
 
     private void mouthKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mouthKeyReleased
         // TODO add your handling code here:
+         DefaultTableModel model = (DefaultTableModel) orderrecord.getModel();
+        String years = year.getText();
+        String mouths = mouth.getText();
+        String days = day.getText();
+        TableRowSorter Sort = new TableRowSorter<>(model);
+//        for (int row = 0; row < model.getRowCount(); row++) {
+//            String valueget = model.getValueAt(row, 3).toString();
+//            String[] datedata = valueget.split("/");
+//                Sort.setRowFilter();
+//
+//        }
+        Sort.setRowFilter(new DateFilter(years,mouths,days));
+        orderrecord.setRowSorter(Sort);
     }//GEN-LAST:event_mouthKeyReleased
 
     private void yearKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_yearKeyReleased
         // TODO add your handling code here:
+         DefaultTableModel model = (DefaultTableModel) orderrecord.getModel();
+        String years = year.getText();
+        String mouths = mouth.getText();
+        String days = day.getText();
+        TableRowSorter Sort = new TableRowSorter<>(model);
+//        for (int row = 0; row < model.getRowCount(); row++) {
+//            String valueget = model.getValueAt(row, 3).toString();
+//            String[] datedata = valueget.split("/");
+//                Sort.setRowFilter();
+//
+//        }
+        Sort.setRowFilter(new DateFilter(years,mouths,days));
+        orderrecord.setRowSorter(Sort);
     }//GEN-LAST:event_yearKeyReleased
+
+    private void UserKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UserKeyReleased
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) orderrecord.getModel();
+        String username = User.getText();
+        TableRowSorter Sort = new TableRowSorter<>(model);
+        Sort.setRowFilter(RowFilter.regexFilter(username,0));
+        orderrecord.setRowSorter(Sort);
+    }//GEN-LAST:event_UserKeyReleased
 
     /**
      * @param args the command line arguments

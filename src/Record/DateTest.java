@@ -7,6 +7,9 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 /**
  *
  * @author cart
@@ -22,5 +25,14 @@ public class DateTest {
         DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/mm/yyyy HH:mm:ss");
         String formatted = mydatetime.format(format);
         System.out.println(formatted);
+        ScriptEngineManager Tojs = new ScriptEngineManager();
+        ScriptEngine js = Tojs.getEngineByName("js");
+        try {
+                String test = "7*2*3/4";
+                System.out.println(js.eval(test));
+        } catch (ScriptException e) {
+            System.out.println(e);
+        }
+    
                 }
 }
