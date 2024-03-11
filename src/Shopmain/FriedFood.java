@@ -11,39 +11,22 @@ package Shopmain;
  */
 public class FriedFood extends Menu{
 
-    public FriedFood() {
-    }
-    
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public void setName(String name) {
+    public  FriedFood(
+    String name , double price 
+    ) {
         this.name = name;
-    }
-    
-    @Override
-    public Double getPrice() {
-        return price;
-    }
-    
-    @Override
-    public void setPrice(Double price) {
         this.price = price;
     }
+
     
     @Override
-    public String getType() {
-        return type;
+    public String gettoppingcode() {
+        return "12";
     }
     
     @Override
-    public void setType(String type) {
-        this.type = type;
+    public double discout(double totalprice ,boolean paywith , double point ) {
+       return 12.2; //need formular
     }
-    
-    
     
 }

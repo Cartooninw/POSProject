@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Main;
-
+import MainUser.*;
+import Record.*;
+import Shopmain.*;
 /**
  *
  * @author cart

@@ -11,9 +11,19 @@ import java.util.ArrayList;
  *
  * @author babos
  */
-public interface InterOrder {
+public class InterOrder {
     
-    ArrayList<AllFood> selectedItems = new ArrayList<>();
-
-    public void addSelectedItem(AllFood selectedItem);
+    ArrayList<Menu> itemlist  = new ArrayList<>();
+    
+    public void addcart(Menu item) {
+        itemlist.add(item);
+    }
+    
+    public ArrayList<Menu> getcart() {
+        return this.itemlist;
+    }
+    public void clearcart() {
+        itemlist.clear();
+    }
+    
 }

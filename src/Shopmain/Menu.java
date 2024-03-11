@@ -14,8 +14,8 @@ public abstract class Menu {
     public Double price;
     public String type;
     
-    public abstract void discout();
-    
+    public abstract double discout(double totalprice ,boolean paywith , double point );
+    public abstract String gettoppingcode();
     
     public String getName() {
         return name;

@@ -9,12 +9,20 @@ package Shopmain;
  *
  * @author babos
  */
-public class SeaFood extends Menu{
+public  class SeaFood extends Menu{
 
-    public SeaFood() {
+    public SeaFood(String name , double price ) {
+        this.name = name;
+        this.price = price;
     }
     
-
+    @Override 
+    public String gettoppingcode() {
+        return "13";
+    }
     
-    
+    @Override
+    public double discout(double totalprice ,boolean paywith , double point  ) { 
+        return 12.2; //need formular
+    }
 }
