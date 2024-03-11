@@ -54,8 +54,7 @@ public class MultiUserManager extends javax.swing.JFrame implements Userdata{
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         ShowData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

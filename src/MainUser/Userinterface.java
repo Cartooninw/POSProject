@@ -34,10 +34,9 @@ public class Userinterface extends javax.swing.JFrame  implements Userdata{
         Point = new javax.swing.JLabel();
         Balance = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
         setBackground(new java.awt.Color(0, 204, 204));
-        setUndecorated(true);
 
         jLabel1.setBackground(new java.awt.Color(255, 204, 204));
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
