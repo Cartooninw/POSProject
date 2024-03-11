@@ -49,18 +49,29 @@ public class sumorder extends javax.swing.JFrame implements temporarilycart{
 
             },
             new String [] {
-                "name", "price", "type"
+                "name", "price"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Double.class, java.lang.String.class
+                java.lang.String.class, java.lang.Double.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
         jScrollPane2.setViewportView(order);
+        if (order.getColumnModel().getColumnCount() > 0) {
+            order.getColumnModel().getColumn(0).setResizable(false);
+            order.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         jButton1.setBackground(new java.awt.Color(51, 255, 51));
         jButton1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N

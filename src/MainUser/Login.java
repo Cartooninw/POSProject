@@ -1,7 +1,7 @@
 package MainUser;
 
 import java.awt.event.KeyEvent;
-
+import Shopmain.Order;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -170,7 +170,16 @@ public class Login extends javax.swing.JFrame implements Userdata{
                 }   
                 
                //space for shopinterface
-               
+               Order Ordertable = new Order();
+               User userset = Data.getSelectuser(Usernameinput);
+               Object[] sendtoorder = {userset.getUsername(),userset.getPoint(),userset.getMoney()};
+//               System.out.println(sendtoorder[0].toString()+sendtoorder[1].toString()+sendtoorder[2].toString());
+               Ordertable.getUserList(sendtoorder);
+               Ordertable.setUsername(userset.getUsername());
+               Ordertable.setLocationRelativeTo(this);
+               Ordertable.show();
+               Ordertable.setVisible(true);
+               this.dispose();
            } else {
                  ShowError.setText("You just enter worng Username or Password!");
            }
@@ -246,11 +255,20 @@ public class Login extends javax.swing.JFrame implements Userdata{
                     MultiUserManager manage = new MultiUserManager();
                         manage.setLocationRelativeTo(this);
                         manage.setVisible(true);
-                        this.dispose();
                 }   
                 
                //space for shopinterface
-               
+               Order Ordertable = new Order();
+               User userset = Data.getSelectuser(Usernameinput);
+               Object[] sendtoorder = {userset.getUsername(),userset.getPoint(),userset.getMoney()};
+//               System.out.println(sendtoorder[0].toString()+sendtoorder[1].toString()+sendtoorder[2].toString());
+               Ordertable.getUserList(sendtoorder);
+               Ordertable.setUsername(userset.getUsername());
+               Ordertable.setLocationRelativeTo(this);
+               Ordertable.show();
+               Ordertable.setVisible(true);
+               this.dispose();
+
            } else {
                  ShowError.setText("You just enter worng Username or Password!");
            }

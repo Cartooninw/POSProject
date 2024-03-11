@@ -62,19 +62,22 @@
                                   </Group>
                                   <Component id="jScrollPane3" min="-2" pref="692" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
+                              <EmptySpace min="51" pref="51" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                   <Component id="jScrollPane1" alignment="1" min="-2" pref="329" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="160" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="confirm" min="-2" pref="154" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" alignment="0" groupAlignment="0" attributes="0">
                                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="discout" min="-2" pref="250" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="jButton1" min="-2" pref="117" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="confirm" min="-2" pref="154" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
+                                  <Component id="discout" alignment="1" min="-2" pref="228" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -88,11 +91,16 @@
               </Group>
               <EmptySpace pref="36" max="32767" attributes="0"/>
           </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Component id="username" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="265" max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -121,12 +129,17 @@
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="add" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                  <Component id="reset" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                  <Component id="confirm" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="confirm" alignment="0" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="add" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="reset" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="username" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -291,19 +304,19 @@
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="3" rowCount="4">
-                <Column editable="true" title="name" type="java.lang.String">
+                <Column editable="false" title="name" type="java.lang.String">
                   <Data value="Padkaprow"/>
                   <Data value="GGG"/>
                   <Data value="FFF"/>
                   <Data value="AAA"/>
                 </Column>
-                <Column editable="true" title="price" type="java.lang.Double">
+                <Column editable="false" title="price" type="java.lang.Double">
                   <Data value="85.0"/>
                   <Data value="12.0"/>
                   <Data value="523.0"/>
                   <Data value="999.0"/>
                 </Column>
-                <Column editable="true" title="type" type="java.lang.String">
+                <Column editable="false" title="type" type="java.lang.String">
                   <Data value="FriedFood"/>
                   <Data value="SeaFood"/>
                   <Data value="FriedFood"/>
@@ -313,17 +326,17 @@
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                   <Title/>
                   <Editor/>
                   <Renderer/>
                 </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                   <Title/>
                   <Editor/>
                   <Renderer/>
                 </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                   <Title/>
                   <Editor/>
                   <Renderer/>
@@ -337,5 +350,18 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="User"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="username">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="ForUsername"/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>

@@ -4,15 +4,17 @@
  */
 package MainUser;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author cart
  */
 public class Userinterface extends javax.swing.JFrame  implements Userdata{
 
-    public void showinfo(User user) {
-        Balance.setText("Your Balance is: "+ user.getUsername());
-        Point.setText("Your Point is: "+ user.getPoint());
+    public void showinfo(ArrayList<Object> user) {
+        Balance.setText("Your Balance is: "+ user.get(1));
+        Point.setText("Your Point is: "+ user.get(2));
     }
     
     public Userinterface() {
