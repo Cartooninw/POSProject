@@ -16,7 +16,6 @@ public class Login extends javax.swing.JFrame implements Userdata{
     public Login() {
         initComponents();
         this.getRootPane().setDefaultButton(toLogin);
-
     }
 
     /**
@@ -156,7 +155,7 @@ public class Login extends javax.swing.JFrame implements Userdata{
 
     private void toLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toLoginActionPerformed
         // TODO add your handling code here:
-        
+        Data.readdata();
         String Usernameinput = Username.getText();
         String Passwordinput = Password.getText();
         if(!(Usernameinput.equals("")) && !(Passwordinput.equals(""))) {
@@ -245,7 +244,9 @@ public class Login extends javax.swing.JFrame implements Userdata{
 
     private void PasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PasswordKeyPressed
         // TODO add your handling code here:
+
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            Data.readdata();
              String Usernameinput = Username.getText();
         String Passwordinput = Password.getText();
         if(!(Usernameinput.equals("")) && !(Passwordinput.equals(""))) {
@@ -310,7 +311,7 @@ public class Login extends javax.swing.JFrame implements Userdata{
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Data.createadmin();
+//                Data.createadmin();
                 new Login().setVisible(true);
             }
         });

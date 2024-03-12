@@ -11,8 +11,8 @@ package MainUser;
 public class SingleUserManager implements Userdata{
     public String Username;
     User Userdata = Data.getSelectuser(this.Username);
-    private double Usermoney = Userdata.getMoney();
-    private double Userpoint = Userdata.getPoint();
+//    private double Usermoney = Userdata.getMoney();
+//    private double Userpoint = Userdata.getPoint();
     public SingleUserManager(String Username) {
         this.Username = Username;
     }
@@ -27,14 +27,14 @@ public class SingleUserManager implements Userdata{
     }
 
 
-    public double getUsermoney() {
-        return Usermoney;
-    }
-
-
-    public double getUserpoint() {
-        return Userpoint;
-    }
+//    public double getUsermoney() {
+//        return Usermoney;
+//    }
+//
+//
+//    public double getUserpoint() {
+//        return Userpoint;
+//    }
 
 
     public void setUserpoint(double Point){

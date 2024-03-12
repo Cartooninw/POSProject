@@ -17,6 +17,12 @@ public class Userinterface extends javax.swing.JFrame  implements Userdata{
         Point.setText("Your Point is: "+ user.get(2));
     }
     
+    public void showinfo(User user) {
+        Balance.setText(user.getMoney()+"");
+        Point.setText(user.getPoint() + "");
+    }
+    
+    
     public Userinterface() {
         initComponents();
     }

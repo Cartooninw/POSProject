@@ -161,6 +161,7 @@ public class Register extends javax.swing.JFrame implements Userdata{
 
     private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
         // TODO add your handling code here:
+        Data.readdata();
         System.out.println( null == Data.getSelectuser(Username.getText()) );
         if (  null == Data.getSelectuser(Username.getText()) ) {
             if (!(Username.getText().equals("")) && !(Password.getText().equals(""))){
@@ -168,6 +169,7 @@ public class Register extends javax.swing.JFrame implements Userdata{
                 if(Password.getText().equals(CPassword.getText())) {
                     ShowError1.setText("");
                     Data.addUser(Username.getText(),Password.getText()); 
+                    Data.readdata();
                     Login tologin = new Login();
                     tologin.setLocationRelativeTo(this);
                     tologin.setVisible(true);

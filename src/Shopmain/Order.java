@@ -11,7 +11,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import javax.swing.RowFilter;
 import MainUser.Userinterface;
-
+import MainUser.SingleUserManager;
 /**
  *
  * @author babos
@@ -22,7 +22,7 @@ public class Order extends javax.swing.JFrame implements temporarilycart{
      */
     
     ArrayList<Object> usernameob = new ArrayList<>();
-    
+    String getusername ;
     public Order() {
         initComponents();
             
@@ -36,6 +36,8 @@ public class Order extends javax.swing.JFrame implements temporarilycart{
     }
     
     public void setUsername(String tousername) {
+        this.getusername = tousername;
+        System.out.println(this.getusername);
         username.setText(tousername);
     }
     /**
@@ -395,6 +397,7 @@ public class Order extends javax.swing.JFrame implements temporarilycart{
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         Userinterface userin = new Userinterface();
+        System.out.println(new SingleUserManager("admin").getUserdata());
         userin.showinfo(usernameob);
         userin.show();
         userin.setLocationRelativeTo(this);
