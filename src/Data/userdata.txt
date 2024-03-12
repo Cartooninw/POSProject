@@ -1,3 +1,2 @@
 admin;admin;9999;9999;admin
-a;a;0;0;Customer
-t;t;0;0;Customer
+

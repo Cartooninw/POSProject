@@ -11,6 +11,6 @@ package Data;
 public class test {
     public static void main(String[] args) {
         DataBase file = new DataBase();
-        file.addRecordData("Hello\n");
+        file.addUserData("Hello\n");
     }
 }
