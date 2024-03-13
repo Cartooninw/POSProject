@@ -11,7 +11,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import javax.swing.RowFilter;
 import MainUser.Userinterface;
-import MainUser.SingleUserManager;
+import Main.Main;
 /**
  *
  * @author babos
@@ -75,7 +75,7 @@ public class Order extends javax.swing.JFrame implements temporarilycart{
 
         jLabel14.setText("FriedFood");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         reset.setText("Reset");
         reset.addMouseListener(new java.awt.event.MouseAdapter() {

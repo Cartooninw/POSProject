@@ -7,6 +7,8 @@ package Record;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import Data.DataBase;
+import java.util.ArrayList;
 //import javax.swing.table.RowSorter;
 
 /**
@@ -21,11 +23,30 @@ public class DateSearch extends javax.swing.JFrame {
     
 //    shopbill Bill  
     DefaultTableModel baseModel ;
+    String defaultusername = "";
     public DateSearch() {
         initComponents();
         this.baseModel = (DefaultTableModel) orderrecord.getModel();
     }
-
+    
+    public void setDefaultUsername(String username) {
+        this.defaultusername = username;
+    }
+    
+    public void placeTable() {
+        DataBase managerdata = new DataBase();
+        System.out.println(this.defaultusername);
+        
+        ArrayList<String> data = managerdata.readRecordData();
+        for (String history : data) {
+            String[] split = history.split(";");
+            baseModel.addRow(new Object[]{split[0],split[2],split[3]});
+        }
+        if (defaultusername != "") {
+            User.setText(this.defaultusername);
+        }
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,27 +69,37 @@ public class DateSearch extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         orderrecord.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"aar", null, null, "2566/12/27"},
-                {"bbh", null, null, "1998/05/12"},
-                {"ccd", null, null, "2555/05/15"}
+
             },
             new String [] {
-                "Username", "Items", "Total", "Date"
+                "Username", "Total", "Date"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Double.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
         jScrollPane1.setViewportView(orderrecord);
+        if (orderrecord.getColumnModel().getColumnCount() > 0) {
+            orderrecord.getColumnModel().getColumn(0).setResizable(false);
+            orderrecord.getColumnModel().getColumn(1).setResizable(false);
+            orderrecord.getColumnModel().getColumn(2).setResizable(false);
+        }
 
         day.setForeground(new java.awt.Color(153, 153, 153));
         day.addActionListener(new java.awt.event.ActionListener() {

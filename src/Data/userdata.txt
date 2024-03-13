@@ -1,1 +1,2 @@
-admin;admin;9999;9999;admin
+admin;admin;299;299;admin
+ad;ad;0;0;Customer

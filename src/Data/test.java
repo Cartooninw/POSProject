@@ -4,6 +4,8 @@
  */
 package Data;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author cart
@@ -11,6 +13,9 @@ package Data;
 public class test {
     public static void main(String[] args) {
         DataBase file = new DataBase();
-        file.addUserData("Hello\n");
+        ArrayList<String> mylist = file.readRecordData();
+        for (String user : mylist) {
+            System.out.println(user.split(";").length);
+        }
     }
 }

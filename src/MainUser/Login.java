@@ -249,14 +249,23 @@ public class Login extends javax.swing.JFrame implements Userdata{
             Data.readdata();
              String Usernameinput = Username.getText();
         String Passwordinput = Password.getText();
+        
         if(!(Usernameinput.equals("")) && !(Passwordinput.equals(""))) {
+            
             if ((null != Data.getSelectuser(Usernameinput)) && (Data.getSelectuser(Usernameinput).getPassword().equals(Passwordinput))) {
+                
                 ShowError.setText("");
+                
                 if (Data.getSelectuser(Usernameinput).getPermission().equals("admin")) {
+                    
                     MultiUserManager manage = new MultiUserManager();
+                    
                         manage.setLocationRelativeTo(this);
                         manage.setVisible(true);
                 }   
+                
+                
+                
                 
                //space for shopinterface
                Order Ordertable = new Order();
