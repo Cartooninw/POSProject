@@ -25,8 +25,8 @@ public class FriedFood extends Menu{
     }
     
     @Override
-    public double discout(double totalprice ,boolean paywith , double point ) {
-       return 12.2; //need formular
+    public double discout(double totalprice    , double point ) {
+          return totalprice  * ((point / 100) * 0.05);
     }
     
 }

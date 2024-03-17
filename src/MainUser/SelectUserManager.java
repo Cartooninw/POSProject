@@ -4,6 +4,11 @@
  */
 package MainUser;
 
+import Data.DataBase;
+import static MainUser.Userdata.Data;
+import Shopmain.Order;
+import java.util.ArrayList;
+
 /**
  *
  * @author cart
@@ -13,6 +18,7 @@ public class SelectUserManager extends javax.swing.JFrame {
     /**
      * Creates new form SelectUserManager
      */
+    public static String username;
     public SelectUserManager() {
         initComponents();
     }
@@ -41,11 +47,21 @@ public class SelectUserManager extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(51, 51, 255));
         jButton1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("jButton1");
+        jButton1.setText("UserManager");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(51, 255, 204));
         jButton2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jButton2.setText("jButton1");
+        jButton2.setText("Shop");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -61,8 +77,8 @@ public class SelectUserManager extends javax.swing.JFrame {
                 .addGap(71, 71, 71)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(83, 83, 83))
+                .addComponent(jButton1)
+                .addGap(70, 70, 70))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -80,6 +96,33 @@ public class SelectUserManager extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+                 Order Ordertable = new Order();
+                  DataBase read = new DataBase();
+                     ArrayList<String> toorderlist = read.readItemData();
+                    Ordertable.Table(toorderlist);
+                    User userset = Data.getSelectuser(username);
+                    Object[] sendtoorder = {userset.getUsername(),userset.getPoint(),userset.getMoney()};
+     //               System.out.println(sendtoorder[0].toString()+sendtoorder[1].toString()+sendtoorder[2].toString());
+                    Ordertable.getUserList(sendtoorder);
+                    Ordertable.setUsername(userset.getUsername());
+                    Ordertable.setLocationRelativeTo(this);
+                    Ordertable.show();
+                    Ordertable.setVisible(true);
+                    Login.main.dispose();
+                    this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+                        MultiUserManager manage = new MultiUserManager();
+                        manage.setLocationRelativeTo(this);
+                        manage.setVisible(true);
+                        Login.main.dispose();
+                        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

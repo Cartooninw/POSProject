@@ -17,6 +17,18 @@ public class DataBase {
     
     protected File userfile = new File("src/Data/userdata.txt");
     protected File recordfile = new File("src/Data/recorddata.txt");
+    protected File itemsfile = new File("src/Data/itemlist.txt");
+    protected File revenuefile = new File("src/Data/recordRevenue.txt");
+    
+    public void writeRevenue(String tofile) {
+        try {
+                FileWriter writen = new FileWriter(this.revenuefile.getAbsolutePath(),true);
+                writen.write(tofile);
+                writen.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public File getUserfile() {
         return userfile;
@@ -26,7 +38,33 @@ public class DataBase {
         return recordfile;
     }
     
+    public void addItemData(String tofile) {
+        try {
+        FileWriter writen = new FileWriter(this.itemsfile.getAbsolutePath(),true);
+        writen.write(tofile);
+        writen.close();
+    } catch (Exception e) {
+        e.printStackTrace();
+        }
+    }
     
+    public ArrayList<String> readItemData() {
+        ArrayList<String> toread = new ArrayList<>();
+            try {
+                    Scanner sc = new Scanner(this.itemsfile);
+                    while (sc.hasNextLine()) {
+                        toread.add(sc.nextLine());
+                }
+                    sc.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }   
+         return toread;
+        }
+
+    public File getItemsfile() {
+        return itemsfile;
+    }
     public void addUserData(String tofile) {
         try {
         FileWriter writen = new FileWriter(this.userfile.getAbsolutePath(),true);
@@ -74,5 +112,7 @@ public class DataBase {
             }   
          return toread;
         }
+
+    
     
 }

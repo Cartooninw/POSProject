@@ -40,10 +40,15 @@ public class DateSearch extends javax.swing.JFrame {
         ArrayList<String> data = managerdata.readRecordData();
         for (String history : data) {
             String[] split = history.split(";");
-            baseModel.addRow(new Object[]{split[0],split[2],split[3]});
+            baseModel.addRow(new Object[]{split[0],split[2],split[3],split[4]});
         }
         if (defaultusername != "") {
             User.setText(this.defaultusername);
+             DefaultTableModel model = (DefaultTableModel) orderrecord.getModel();
+            String username = User.getText();
+            TableRowSorter Sort = new TableRowSorter<>(model);
+            Sort.setRowFilter(RowFilter.regexFilter(username,0));
+            orderrecord.setRowSorter(Sort);
         }
         
     }
@@ -76,14 +81,14 @@ public class DateSearch extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Username", "Total", "Date"
+                "Username", "Total", "Date", "ordercode"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -94,11 +99,17 @@ public class DateSearch extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        orderrecord.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                orderrecordMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(orderrecord);
         if (orderrecord.getColumnModel().getColumnCount() > 0) {
             orderrecord.getColumnModel().getColumn(0).setResizable(false);
             orderrecord.getColumnModel().getColumn(1).setResizable(false);
             orderrecord.getColumnModel().getColumn(2).setResizable(false);
+            orderrecord.getColumnModel().getColumn(3).setResizable(false);
         }
 
         day.setForeground(new java.awt.Color(153, 153, 153));
@@ -244,6 +255,7 @@ public class DateSearch extends javax.swing.JFrame {
 
     private void dayKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dayKeyReleased
         DefaultTableModel model = (DefaultTableModel) orderrecord.getModel();
+        String usernames = User.getText();
         String years = year.getText();
         String mouths = mouth.getText();
         String days = day.getText();
@@ -254,7 +266,7 @@ public class DateSearch extends javax.swing.JFrame {
 //                Sort.setRowFilter();
 //
 //        }
-        Sort.setRowFilter(new DateFilter(years,mouths,days));
+        Sort.setRowFilter(new DateFilter(days,mouths,years,usernames));
         orderrecord.setRowSorter(Sort);
         
         
@@ -263,6 +275,7 @@ public class DateSearch extends javax.swing.JFrame {
     private void mouthKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mouthKeyReleased
         // TODO add your handling code here:
          DefaultTableModel model = (DefaultTableModel) orderrecord.getModel();
+        String usernames = User.getText();
         String years = year.getText();
         String mouths = mouth.getText();
         String days = day.getText();
@@ -273,13 +286,14 @@ public class DateSearch extends javax.swing.JFrame {
 //                Sort.setRowFilter();
 //
 //        }
-        Sort.setRowFilter(new DateFilter(years,mouths,days));
+        Sort.setRowFilter(new DateFilter(days,mouths,years,usernames));
         orderrecord.setRowSorter(Sort);
     }//GEN-LAST:event_mouthKeyReleased
 
     private void yearKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_yearKeyReleased
         // TODO add your handling code here:
          DefaultTableModel model = (DefaultTableModel) orderrecord.getModel();
+        String usernames = User.getText();
         String years = year.getText();
         String mouths = mouth.getText();
         String days = day.getText();
@@ -290,18 +304,42 @@ public class DateSearch extends javax.swing.JFrame {
 //                Sort.setRowFilter();
 //
 //        }
-        Sort.setRowFilter(new DateFilter(years,mouths,days));
+        Sort.setRowFilter(new DateFilter(days,mouths,years,usernames));
         orderrecord.setRowSorter(Sort);
     }//GEN-LAST:event_yearKeyReleased
 
     private void UserKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UserKeyReleased
         // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) orderrecord.getModel();
-        String username = User.getText();
+              DefaultTableModel model = (DefaultTableModel) orderrecord.getModel();
+        String usernames = User.getText();
+        String years = year.getText();
+        String mouths = mouth.getText();
+        String days = day.getText();
         TableRowSorter Sort = new TableRowSorter<>(model);
-        Sort.setRowFilter(RowFilter.regexFilter(username,0));
+//        for (int row = 0; row < model.getRowCount(); row++) {
+//            String valueget = model.getValueAt(row, 3).toString();
+//            String[] datedata = valueget.split("/");
+//                Sort.setRowFilter();
+//
+//        }
+        Sort.setRowFilter(new DateFilter(days,mouths,years,usernames));
         orderrecord.setRowSorter(Sort);
     }//GEN-LAST:event_UserKeyReleased
+
+    private void orderrecordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_orderrecordMouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) orderrecord.getModel();
+        int row = orderrecord.getSelectedRow();
+        ReadRecordCode read = new ReadRecordCode();
+        String code = model.getValueAt(row, 3).toString();
+        read.readdata();
+        String data = read.GetSelectCode(code);
+        CheckOrder check = new CheckOrder() ;
+        check.DataToTable(data);
+        check.setLocationRelativeTo(this);
+        check.show();
+        check.setVisible(true);
+    }//GEN-LAST:event_orderrecordMouseClicked
 
     /**
      * @param args the command line arguments

@@ -4,10 +4,13 @@
  */
 package MainUser;
 
+import Data.DataBase;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import Record.DateSearch;
+import Shopmain.AdminInterface;
+import Record.SelfCal;
 /**
  *
  * @author cart
@@ -60,6 +63,7 @@ public class MultiUserManager extends javax.swing.JFrame implements Userdata{
         calculator = new javax.swing.JButton();
         summary = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -153,6 +157,11 @@ public class MultiUserManager extends javax.swing.JFrame implements Userdata{
         calculator.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         calculator.setForeground(new java.awt.Color(255, 255, 255));
         calculator.setText("Calculator");
+        calculator.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                calculatorActionPerformed(evt);
+            }
+        });
 
         summary.setBackground(new java.awt.Color(51, 255, 51));
         summary.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
@@ -162,8 +171,16 @@ public class MultiUserManager extends javax.swing.JFrame implements Userdata{
         jLabel3.setFont(new java.awt.Font("sansserif", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 51, 51));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel3.setText("<html>warning : if click on Summary button it's will reset the perious summary data So just click it day by day</html>\n");
+        jLabel3.setText("<html>warning : if click on Summary button it's will reset the previous summary data So just click it day by day</html> ");
         jLabel3.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+
+        jButton1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jButton1.setText("Items");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -179,18 +196,12 @@ public class MultiUserManager extends javax.swing.JFrame implements Userdata{
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(89, 89, 89)
                                 .addComponent(jLabel7)))
-                        .addGap(107, 119, Short.MAX_VALUE))
+                        .addGap(107, 116, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addGap(12, 12, 12)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(Permission)
-                                            .addComponent(Remove, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addComponent(jLabel2)
                                         .addGap(18, 18, 18)
@@ -200,21 +211,28 @@ public class MultiUserManager extends javax.swing.JFrame implements Userdata{
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(Error, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(history, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addComponent(summary, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(history, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                    .addComponent(calculator)))
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                                .addComponent(summary, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                        .addComponent(calculator, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(0, 0, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(btnpermission)))
-                                .addGap(0, 11, Short.MAX_VALUE))
+                                        .addComponent(btnpermission))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(jLabel6)
+                                        .addGap(12, 12, 12)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(Permission)
+                                            .addComponent(Remove, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(Back)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -246,7 +264,9 @@ public class MultiUserManager extends javax.swing.JFrame implements Userdata{
                             .addComponent(history, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(calculator, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(summary, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(summary, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -287,7 +307,8 @@ public class MultiUserManager extends javax.swing.JFrame implements Userdata{
             String Username = Datashow.getValueAt(select,0).toString();
              if (!("admin".equals(test))) {
                  Data.RemoveSelectuser(Username);
-                Datashow.removeRow(select);
+                 Data.updatedata();
+                 Datashow.removeRow(select);
                 Datashow.fireTableDataChanged();
             } else {
                  Error.setText("You don't have Permission to delete this account.");
@@ -305,6 +326,9 @@ public class MultiUserManager extends javax.swing.JFrame implements Userdata{
         int select = ShowData.getSelectedRow();
         User user = Data.getSelectuser(Datashow.getValueAt(select, 0).toString());
         user.setPermission(Permission.getText());
+        Data.insertUser(user.getUsername());
+        Data.updatedata();
+        Data.readdata();
         Datashow.setValueAt(Permission.getText(), select, 4);
        Datashow.fireTableDataChanged();
     }//GEN-LAST:event_btnpermissionActionPerformed
@@ -322,6 +346,25 @@ public class MultiUserManager extends javax.swing.JFrame implements Userdata{
         historynew.setLocationRelativeTo(this);
         historynew.setVisible(true);
     }//GEN-LAST:event_historyActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        DataBase base = new DataBase();
+        AdminInterface itemManager = new AdminInterface();
+        itemManager.Table(base.readItemData());
+        itemManager.show();
+        itemManager.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void calculatorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculatorActionPerformed
+        // TODO add your handling code here:
+        SelfCal Calcu = new SelfCal();
+        Calcu.show();
+        Calcu.setVisible(true);
+        Calcu.setLocationRelativeTo(null);
+                
+    }//GEN-LAST:event_calculatorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -368,6 +411,7 @@ public class MultiUserManager extends javax.swing.JFrame implements Userdata{
     private javax.swing.JButton btnpermission;
     private javax.swing.JButton calculator;
     private javax.swing.JButton history;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

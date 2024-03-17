@@ -1,0 +1,10 @@
+Liquality;200;FriedFood
+OrderBlock;700;SeaFood
+MarketSturctureShift;100;SeaFood
+MarkeySturctureBreak;300;FriedFood
+Thisisfortest;300;FriedFood
+test3;33;SeaFood
+adminFood;200;SeaFood
+asd;200;FriedFood
+RRRR;12;FriedFood
+test;25;SeaFood

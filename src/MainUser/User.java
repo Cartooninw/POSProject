@@ -46,7 +46,7 @@ public class User {
         this.password = password;
     }
 
-    protected void setPoint(double point) {
+    public void setPoint(double point) {
         this.point = point;
     }
 
@@ -54,7 +54,7 @@ public class User {
         return money;
     }
 
-    protected void setMoney(double money) {
+    public void setMoney(double money) {
         this.money = money;
     }
     

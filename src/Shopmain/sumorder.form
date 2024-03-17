@@ -245,11 +245,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Use your balance"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="moneycheckActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JCheckBox" name="pointcheck">
       <Properties>
         <Property name="text" type="java.lang.String" value="Use your point"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pointcheckActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

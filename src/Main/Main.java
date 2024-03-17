@@ -6,6 +6,14 @@ package Main;
 import MainUser.*;
 import Record.*;
 import Shopmain.*;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import Data.DataBase;
+import Data.OPD;
 /**
  *
  * @author cart
@@ -15,8 +23,30 @@ public class Main extends javax.swing.JFrame {
     /**
      * Creates new form Main
      */
+    
     public Main() {
         initComponents();
+        this.setLocationRelativeTo(null);
+    }
+    public static void TimeCheck() {
+        LocalTime curTime = LocalTime.now();
+        LocalDate curdate =LocalDate.now();
+            DateTimeFormatter formatted = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        if (curTime == LocalTime.MIN) {
+//            LocalDate curdate =LocalDate.now();
+//            DateTimeFormatter formatted = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            new DataBase().writeRevenue(String.format("%s;%s;%s;%s\n", curdate.format(formatted),OPD.getRevenueCount(),OPD.getOrderCount(),OPD.getDiscoutCount()));
+            OPD.resetTheDay();
+        }
+                System.out.println(String.format("%s;%s;%s;%s\n", curdate.format(formatted),OPD.getRevenueCount(),OPD.getOrderCount(),OPD.getDiscoutCount()));
+
+    }
+    public static void TimeRecord() {
+        ScheduledExecutorService runtime = Executors.newSingleThreadScheduledExecutor();
+        
+        int delay = 1;
+        runtime.scheduleAtFixedRate(() -> TimeCheck() , 0, delay, TimeUnit.SECONDS);
+        LocalDate curdate =LocalDate.now();
     }
 
     /**
@@ -149,7 +179,9 @@ public class Main extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
+        Main.TimeRecord();
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

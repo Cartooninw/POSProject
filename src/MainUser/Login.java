@@ -2,6 +2,8 @@ package MainUser;
 
 import java.awt.event.KeyEvent;
 import Shopmain.Order;
+import Data.DataBase;
+import java.util.ArrayList;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -12,9 +14,10 @@ import Shopmain.Order;
  * @author cart
  */
 public class Login extends javax.swing.JFrame implements Userdata{
-
+    public static Login main;
     public Login() {
         initComponents();
+        main = this;
         this.getRootPane().setDefaultButton(toLogin);
     }
 
@@ -156,29 +159,40 @@ public class Login extends javax.swing.JFrame implements Userdata{
     private void toLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toLoginActionPerformed
         // TODO add your handling code here:
         Data.readdata();
+        DataBase read = new DataBase();
+        ArrayList<String> toorderlist = read.readItemData();
         String Usernameinput = Username.getText();
         String Passwordinput = Password.getText();
         if(!(Usernameinput.equals("")) && !(Passwordinput.equals(""))) {
             if ((null != Data.getSelectuser(Usernameinput)) && (Data.getSelectuser(Usernameinput).getPassword().equals(Passwordinput))) {
                 ShowError.setText("");
                 if (Data.getSelectuser(Usernameinput).getPermission().equals("admin")) {
-                    MultiUserManager manage = new MultiUserManager();
-                        manage.setLocationRelativeTo(this);
-                        manage.setVisible(true);
-                        this.dispose();
+                    
+                    
+                    SelectUserManager.username = Usernameinput;
+                    SelectUserManager selectuser = new SelectUserManager();
+                    selectuser.setLocationRelativeTo(this);
+                    selectuser.setVisible(true);
+//                    MultiUserManager manage = new MultiUserManager();
+//                        manage.setLocationRelativeTo(this);
+//                        manage.setVisible(true);
+//                        this.dispose();
+                } else {
+                    Order Ordertable = new Order();
+                    Ordertable.Table(toorderlist);
+                    User userset = Data.getSelectuser(Usernameinput);
+                    Object[] sendtoorder = {userset.getUsername(),userset.getPoint(),userset.getMoney()};
+     //               System.out.println(sendtoorder[0].toString()+sendtoorder[1].toString()+sendtoorder[2].toString());
+                    Ordertable.getUserList(sendtoorder);
+                    Ordertable.setUsername(userset.getUsername());
+                    Ordertable.setLocationRelativeTo(this);
+                    Ordertable.show();
+                    Ordertable.setVisible(true);
+                    this.dispose();
                 }   
                 
                //space for shopinterface
-               Order Ordertable = new Order();
-               User userset = Data.getSelectuser(Usernameinput);
-               Object[] sendtoorder = {userset.getUsername(),userset.getPoint(),userset.getMoney()};
-//               System.out.println(sendtoorder[0].toString()+sendtoorder[1].toString()+sendtoorder[2].toString());
-               Ordertable.getUserList(sendtoorder);
-               Ordertable.setUsername(userset.getUsername());
-               Ordertable.setLocationRelativeTo(this);
-               Ordertable.show();
-               Ordertable.setVisible(true);
-               this.dispose();
+               
            } else {
                  ShowError.setText("You just enter worng Username or Password!");
            }
@@ -247,6 +261,8 @@ public class Login extends javax.swing.JFrame implements Userdata{
 
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             Data.readdata();
+             DataBase read = new DataBase();
+            ArrayList<String> toorderlist = read.readItemData();
              String Usernameinput = Username.getText();
         String Passwordinput = Password.getText();
         
@@ -256,28 +272,31 @@ public class Login extends javax.swing.JFrame implements Userdata{
                 
                 ShowError.setText("");
                 
-                if (Data.getSelectuser(Usernameinput).getPermission().equals("admin")) {
-                    
-                    MultiUserManager manage = new MultiUserManager();
-                    
-                        manage.setLocationRelativeTo(this);
-                        manage.setVisible(true);
+                    if (Data.getSelectuser(Usernameinput).getPermission().equals("admin")) {
+                        
+                    SelectUserManager.username = Usernameinput;
+                    SelectUserManager selectuser = new SelectUserManager();
+                    selectuser.setLocationRelativeTo(this);
+                    selectuser.setVisible(true);
+//                    MultiUserManager manage = new MultiUserManager();
+//                        manage.setLocationRelativeTo(this);
+//                        manage.setVisible(true);
+//                        this.dispose();
+
+
+                } else {
+                    Order Ordertable = new Order();
+                    Ordertable.Table(toorderlist);
+                    User userset = Data.getSelectuser(Usernameinput);
+                    Object[] sendtoorder = {userset.getUsername(),userset.getPoint(),userset.getMoney()};
+     //               System.out.println(sendtoorder[0].toString()+sendtoorder[1].toString()+sendtoorder[2].toString());
+                    Ordertable.getUserList(sendtoorder);
+                    Ordertable.setUsername(userset.getUsername());
+                    Ordertable.setLocationRelativeTo(this);
+                    Ordertable.show();
+                    Ordertable.setVisible(true);
+                    this.dispose();
                 }   
-                
-                
-                
-                
-               //space for shopinterface
-               Order Ordertable = new Order();
-               User userset = Data.getSelectuser(Usernameinput);
-               Object[] sendtoorder = {userset.getUsername(),userset.getPoint(),userset.getMoney()};
-//               System.out.println(sendtoorder[0].toString()+sendtoorder[1].toString()+sendtoorder[2].toString());
-               Ordertable.getUserList(sendtoorder);
-               Ordertable.setUsername(userset.getUsername());
-               Ordertable.setLocationRelativeTo(this);
-               Ordertable.show();
-               Ordertable.setVisible(true);
-               this.dispose();
 
            } else {
                  ShowError.setText("You just enter worng Username or Password!");

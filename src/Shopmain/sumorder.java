@@ -4,22 +4,40 @@
  */
 package Shopmain;
 
-import static Shopmain.temporarilycart.cartlist;
 import javax.swing.table.DefaultTableModel;
-
+import Data.OPD;
+import Main.Main;
+import MainUser.MultiUserData;
+import MainUser.User;
 /**
  *
  * @author cart
  */
-public class sumorder extends javax.swing.JFrame implements temporarilycart{
-
+public class sumorder extends javax.swing.JFrame  {
+    
+    public static InterOrder cartlista = new InterOrder();
+    public MultiUserData data = new MultiUserData(); 
+    public String username ;
     public sumorder() {
         initComponents();
+        data.readdata();
+        double totalget = 0;
+        User user = data.getSelectuser(username);
+        for (Menu item : cartlista.getcart()) {
+            totalget += item.getPrice(); 
+        }
+            pricetotal.setText(totalget+"");
+            discouttotal.setText("0");
+            total.setText(totalget+"");
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
     
     public  void toordertable() {
         DefaultTableModel model =  (DefaultTableModel) order.getModel();
-        for (Menu item : cartlist.getcart()) {
+        for (Menu item : cartlista.getcart()) {
             Object[] itemto = {item.getName() , item.getPrice() , item.getType()};
             model.addRow(itemto);
         }
@@ -117,8 +135,18 @@ public class sumorder extends javax.swing.JFrame implements temporarilycart{
         pricetotal.setText("jLabel7");
 
         moneycheck.setText("Use your balance");
+        moneycheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                moneycheckActionPerformed(evt);
+            }
+        });
 
         pointcheck.setText("Use your point");
+        pointcheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pointcheckActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -211,21 +239,96 @@ public class sumorder extends javax.swing.JFrame implements temporarilycart{
         double totalget = 0;
         double pointdiscout = 0 ;
         double moneyinstead = 0;
-        for (Menu item : cartlist.getcart()) {
+;
+        User user = data.getSelectuser(username);
+        double point = user.getPoint();
+        for (Menu item : cartlista.getcart()) {
             totalget += item.getPrice(); 
         }
+            if (pointcheck.isSelected()) {
+                    for (Menu item : cartlista.getcart()) {
+                        if (totalget > item.discout(item.getPrice(), point)) {
+                            pointdiscout += item.discout(item.getPrice(), point);
+                        } else {
+                            pointdiscout += totalget;
+                            break;
+                        }
+                    }
+             if (pointdiscout > 0) {
+                OPD.addDiscoutCount();
+                user.setPoint(0);
+            }
+        } else {
+                
+            }
+            
+            
+        double  totalPay = totalget - pointdiscout;
+
+            
         if (moneycheck.isSelected()) {
-            
-        } else {
-            
-        }
-        if (pointcheck.isSelected()) {
-            
-        } else {
-            
-        }
+            System.out.println(user.getMoney());
+            if (user.getMoney() <= totalPay) {
+                moneyinstead += user.getMoney();
+                user.setMoney(0);
+            } else {
+                user.setMoney(user.getMoney() - totalPay);
+                moneyinstead += totalPay;
+            }
+        } 
+        
+
+        OPD.addOrderCount();
+        OPD.addRevenueCount(totalPay);
+         data.setPointBySelected(username);
+            data.updatedata();
+            data.readdata();
+            Main reto = new Main();
+            reto.show();
+            reto.setLocationRelativeTo(this);
+            reto.setVisible(true);
+            Order.ordermn.dispose();
+            this.dispose();
         
     }//GEN-LAST:event_payActionPerformed
+
+    private void pointcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pointcheckActionPerformed
+        // TODO add your handling code here:
+              double totalget = 0;
+        double pointdiscout = 0 ;
+;
+        User user = data.getSelectuser(username);
+        double point = user.getPoint();
+        for (Menu item : cartlista.getcart()) {
+            totalget += item.getPrice(); 
+        }
+            if (pointcheck.isSelected()) {
+                    for (Menu item : cartlista.getcart()) {
+                        if (totalget > item.discout(item.getPrice(), point)) {
+                            pointdiscout += item.discout(item.getPrice(), point);
+                        } else {
+                            pointdiscout += totalget;
+                            break;
+                        }
+                    }
+        } 
+        double  totalPay = totalget - pointdiscout;
+
+        if (pointcheck.isSelected()) {
+            pricetotal.setText(totalget+"");
+            discouttotal.setText(pointdiscout+"");
+            total.setText(totalPay+"");
+        } else {
+            pricetotal.setText(totalget+"");
+            discouttotal.setText(pointdiscout+"");
+            total.setText(totalPay+"");
+        }
+    }//GEN-LAST:event_pointcheckActionPerformed
+
+    private void moneycheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moneycheckActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_moneycheckActionPerformed
 
     /**
      * @param args the command line arguments

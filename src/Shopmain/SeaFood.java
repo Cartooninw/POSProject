@@ -22,7 +22,7 @@ public  class SeaFood extends Menu{
     }
     
     @Override
-    public double discout(double totalprice ,boolean paywith , double point  ) { 
-        return 12.2; //need formular
+    public double discout(double iteam    , double point  ) { 
+        return iteam * ((point / 100) * 0.03);
     }
 }

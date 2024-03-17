@@ -4,6 +4,8 @@
  */
 package Record;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author cart
@@ -16,6 +18,15 @@ public class CheckOrder extends javax.swing.JFrame {
     public CheckOrder() {
         initComponents();
     }
+    public void DataToTable(String Data) {
+        DefaultTableModel model = (DefaultTableModel) order.getModel();
+        String[] data = Data.split(";")[1].split("/");
+        for (String item : data) { 
+            String name = item.split("-")[0];
+            String price = item.split("-")[1];
+           model.addRow(new Object[] {name,price});
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,22 +38,38 @@ public class CheckOrder extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        order = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        order.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Name", "Price"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(order);
+        if (order.getColumnModel().getColumnCount() > 0) {
+            order.getColumnModel().getColumn(0).setResizable(false);
+            order.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,6 +128,6 @@ public class CheckOrder extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable order;
     // End of variables declaration//GEN-END:variables
 }

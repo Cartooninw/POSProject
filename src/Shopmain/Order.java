@@ -11,21 +11,32 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import javax.swing.RowFilter;
 import MainUser.Userinterface;
+import Data.DataBase;
 import Main.Main;
 /**
  *
  * @author babos
  */
-public class Order extends javax.swing.JFrame implements temporarilycart{
+public class Order extends javax.swing.JFrame  {
     /**
      * Creates new form NewJFrame
      */
-    
+    public static Order ordermn;
     ArrayList<Object> usernameob = new ArrayList<>();
     String getusername ;
     public Order() {
         initComponents();
-            
+        ordermn = this;
+    }
+    public void  Table(ArrayList<String> data) {
+        DefaultTableModel table = (DefaultTableModel) items.getModel();
+        for (String item : data) {
+            String[] split = item.split(";");
+            String name = split[0];
+            double  price = Double.parseDouble(split[1]);
+            String type = split[2];
+            table.addRow(new Object[] {name,price,type});
+        }
     }
     
     public void getUserList(Object[] username) {
@@ -68,6 +79,7 @@ public class Order extends javax.swing.JFrame implements temporarilycart{
         items = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         username = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         jLabel12.setText("Fried Fish");
 
@@ -166,10 +178,7 @@ public class Order extends javax.swing.JFrame implements temporarilycart{
 
         items.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Padkaprow",  new Double(85.0), "FriedFood"},
-                {"GGG",  new Double(12.0), "SeaFood"},
-                {"FFF",  new Double(523.0), "FriedFood"},
-                {"AAA",  new Double(999.0), "SeaFood"}
+
             },
             new String [] {
                 "name", "price", "type"
@@ -206,6 +215,16 @@ public class Order extends javax.swing.JFrame implements temporarilycart{
 
         username.setText("ForUsername");
 
+        jButton2.setBackground(new java.awt.Color(255, 51, 51));
+        jButton2.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Back");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -223,12 +242,14 @@ public class Order extends javax.swing.JFrame implements temporarilycart{
                                 .addComponent(sortseafood))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 692, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
-                                        .addComponent(reset, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(reset, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(add, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 692, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(add, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(51, 51, 51)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -286,7 +307,9 @@ public class Order extends javax.swing.JFrame implements temporarilycart{
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(username)
-                .addGap(62, 62, 62))
+                .addGap(4, 4, 4)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
 
         pack();
@@ -300,6 +323,7 @@ public class Order extends javax.swing.JFrame implements temporarilycart{
     private void confirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmActionPerformed
         // TODO add your handling code here:
        sumorder newsum = new sumorder();
+       newsum.setUsername(getusername);
        newsum.toordertable();
        newsum.show();
        newsum.setLocationRelativeTo(this);
@@ -318,16 +342,16 @@ public class Order extends javax.swing.JFrame implements temporarilycart{
         
         switch (type) {
             case "FriedFood":
-                cartlist.addcart(new FriedFood(name,Double.parseDouble(price)));
+                sumorder.cartlista.addcart(new FriedFood(name,Double.parseDouble(price)));
                 break;
             case "SeaFood":
-                cartlist.addcart(new SeaFood(name,Double.parseDouble(price)));
+                sumorder.cartlista.addcart(new SeaFood(name,Double.parseDouble(price)));
                 break;
         }
         if (cartmodel.getRowCount() > 0 ) {
                 cartmodel.setRowCount(0);
         }
-        for (Menu item : cartlist.getcart()) {
+        for (Menu item : sumorder.cartlista.getcart()) {
                 Object[] myobject = {item.getName(),item.getPrice()};
                 cartmodel.addRow(myobject);
             }
@@ -346,40 +370,39 @@ public class Order extends javax.swing.JFrame implements temporarilycart{
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel) cart.getModel() ;
         model.setRowCount(0);
-        cartlist.clearcart();
+        sumorder.cartlista.clearcart();
         
     }//GEN-LAST:event_resetActionPerformed
 
     private void sortseafoodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortseafoodActionPerformed
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel) items.getModel();
-        TableRowSorter newsort = new TableRowSorter<>(model);
-
+        TableRowSorter sorting = new TableRowSorter<>(model);
+        String getbyname = search.getText();
+        sorting.setRowFilter(new OrderListFilter(getbyname,sortfriedfood,sortseafood));
+        items.setRowSorter(sorting);
+        
         if (sortseafood.isSelected()) {
-        newsort.setRowFilter(RowFilter.regexFilter("SeaFood",2));
-        items.setRowSorter(newsort);
-         model.fireTableDataChanged();   
+            sortfriedfood.setEnabled(false);
         } else {
-            newsort.setRowFilter(RowFilter.regexFilter("",2));
-            items.setRowSorter(newsort);
-            model.fireTableDataChanged(); 
+            sortfriedfood.setEnabled(true);
         }
         
     }//GEN-LAST:event_sortseafoodActionPerformed
 
     private void sortfriedfoodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortfriedfoodActionPerformed
         // TODO add your handling code here:
-          DefaultTableModel model = (DefaultTableModel) items.getModel();
-        TableRowSorter newsort = new TableRowSorter<>(model);
+         DefaultTableModel model = (DefaultTableModel) items.getModel();
+        TableRowSorter sorting = new TableRowSorter<>(model);
+        String getbyname = search.getText();
+        sorting.setRowFilter(new OrderListFilter(getbyname,sortfriedfood,sortseafood));
+        items.setRowSorter(sorting);
 
         if (sortfriedfood.isSelected()) {
-        newsort.setRowFilter(RowFilter.regexFilter("FriedFood",2));
-        items.setRowSorter(newsort);
-         model.fireTableDataChanged();   
+            sortseafood.setEnabled(false);
+
         } else {
-            newsort.setRowFilter(RowFilter.regexFilter("",2));
-            items.setRowSorter(newsort);
-            model.fireTableDataChanged(); 
+            sortseafood.setEnabled(true);
         }
         
     }//GEN-LAST:event_sortfriedfoodActionPerformed
@@ -389,7 +412,7 @@ public class Order extends javax.swing.JFrame implements temporarilycart{
         DefaultTableModel model = (DefaultTableModel) items.getModel();
         TableRowSorter sorting = new TableRowSorter<>(model);
         String getbyname = search.getText();
-        sorting.setRowFilter(RowFilter.regexFilter(getbyname,0));
+        sorting.setRowFilter(new OrderListFilter(getbyname,sortfriedfood,sortseafood));
         items.setRowSorter(sorting);
     }//GEN-LAST:event_searchKeyReleased
 
@@ -401,6 +424,15 @@ public class Order extends javax.swing.JFrame implements temporarilycart{
         userin.setLocationRelativeTo(this);
         userin.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        Main reto = new Main();
+            reto.show();
+            reto.setLocationRelativeTo(this);
+            reto.setVisible(true);
+            this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -428,6 +460,7 @@ public class Order extends javax.swing.JFrame implements temporarilycart{
     private javax.swing.JLabel discout;
     private javax.swing.JTable items;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;

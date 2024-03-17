@@ -26,4 +26,8 @@ public class InterOrder {
         itemlist.clear();
     }
     
+    public int getLength() {
+        return itemlist.size();
+    }
+    
 }

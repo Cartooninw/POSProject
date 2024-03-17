@@ -13,8 +13,8 @@ import java.util.ArrayList;
 public class Userinterface extends javax.swing.JFrame  implements Userdata{
 
     public void showinfo(ArrayList<Object> user) {
-        Balance.setText("Your Balance is: "+ user.get(1));
-        Point.setText("Your Point is: "+ user.get(2));
+        Balance.setText("Your Balance is: "+ user.get(2));
+        Point.setText("Your Point is: "+ user.get(1));
     }
     
     public void showinfo(User user) {
