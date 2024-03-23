@@ -353,7 +353,7 @@ public class sumorder extends javax.swing.JFrame  {
     double basemoney = 0;
 //        double totalpay = Globaltotal;
         if (moneycheck.isSelected()) {
-            if (money <= Globaltotal) {
+            if (money < Globaltotal) {
                 basemoney += money;
                  Globaltotal -= money;
                  money -= money;
@@ -379,7 +379,7 @@ public class sumorder extends javax.swing.JFrame  {
 //                  Globaltotal += 
             }
             else {
-                money += Globaltotal;
+                money += basepay;
                 Globaltotal += basepay;
                 pointcheck.setEnabled(true);
 //                Globaltotal -= Globaltotal; 6
