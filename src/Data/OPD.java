@@ -8,6 +8,7 @@ package Data;
  *
  * @author cart
  */
+//order per day.
 public class OPD {
         protected static int OrderCount;
         protected static double RevenueCount;

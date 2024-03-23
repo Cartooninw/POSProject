@@ -178,7 +178,7 @@ public class Login extends javax.swing.JFrame implements Userdata{
 //                        manage.setVisible(true);
 //                        this.dispose();
                 } else {
-                    Order Ordertable = new Order();
+                    Order Ordertable = new Order(Usernameinput);
                     Ordertable.Table(toorderlist);
                     User userset = Data.getSelectuser(Usernameinput);
                     Object[] sendtoorder = {userset.getUsername(),userset.getPoint(),userset.getMoney()};
@@ -285,11 +285,10 @@ public class Login extends javax.swing.JFrame implements Userdata{
 
 
                 } else {
-                    Order Ordertable = new Order();
+                    Order Ordertable = new Order(Usernameinput);
                     Ordertable.Table(toorderlist);
                     User userset = Data.getSelectuser(Usernameinput);
                     Object[] sendtoorder = {userset.getUsername(),userset.getPoint(),userset.getMoney()};
-     //               System.out.println(sendtoorder[0].toString()+sendtoorder[1].toString()+sendtoorder[2].toString());
                     Ordertable.getUserList(sendtoorder);
                     Ordertable.setUsername(userset.getUsername());
                     Ordertable.setLocationRelativeTo(this);

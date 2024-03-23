@@ -38,7 +38,7 @@ public class OrderListFilter extends RowFilter{
                  SeaFoodCheck =   true;
         }
         
-        boolean Search = this.name.isEmpty() || name.contains(this.name);
+        boolean Search = this.name.isEmpty() || name.toLowerCase().contains(this.name);
 
         
         return FriedFoodCheck && SeaFoodCheck && Search;

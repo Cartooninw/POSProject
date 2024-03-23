@@ -9,6 +9,7 @@ import Data.OPD;
 import Main.Main;
 import MainUser.MultiUserData;
 import MainUser.User;
+
 /**
  *
  * @author cart
@@ -18,17 +19,22 @@ public class sumorder extends javax.swing.JFrame  {
     public static InterOrder cartlista = new InterOrder();
     public MultiUserData data = new MultiUserData(); 
     public String username ;
+    public double Globaltotal = 0;
+    public double basepay;
+    boolean ismoneygreater ;
+    double  totalPay;
     public sumorder() {
         initComponents();
         data.readdata();
-        double totalget = 0;
+//        double totalget = 0;
         User user = data.getSelectuser(username);
         for (Menu item : cartlista.getcart()) {
-            totalget += item.getPrice(); 
+            Globaltotal += item.getPrice(); 
         }
-            pricetotal.setText(totalget+"");
+            basepay = Globaltotal;
+            pricetotal.setText(String.format("%.2f", basepay));
             discouttotal.setText("0");
-            total.setText(totalget+"");
+            total.setText(String.format("%.2f", Globaltotal));
     }
 
     public void setUsername(String username) {
@@ -65,7 +71,7 @@ public class sumorder extends javax.swing.JFrame  {
         moneycheck = new javax.swing.JCheckBox();
         pointcheck = new javax.swing.JCheckBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         jLabel1.setText("This is your order:");
@@ -236,21 +242,20 @@ public class sumorder extends javax.swing.JFrame  {
 
     private void payActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payActionPerformed
         // TODO add your handling code here:
-        double totalget = 0;
+//        double totalget = 0;
         double pointdiscout = 0 ;
-        double moneyinstead = 0;
 ;
         User user = data.getSelectuser(username);
         double point = user.getPoint();
-        for (Menu item : cartlista.getcart()) {
-            totalget += item.getPrice(); 
-        }
+//        for (Menu item : cartlista.getcart()) {
+////            totalget += item.getPrice(); 
+//        }
             if (pointcheck.isSelected()) {
                     for (Menu item : cartlista.getcart()) {
-                        if (totalget > item.discout(item.getPrice(), point)) {
+                        if (Globaltotal > item.discout(item.getPrice(), point)) {
                             pointdiscout += item.discout(item.getPrice(), point);
                         } else {
-                            pointdiscout += totalget;
+                            pointdiscout += Globaltotal;
                             break;
                         }
                     }
@@ -263,71 +268,128 @@ public class sumorder extends javax.swing.JFrame  {
             }
             
             
-        double  totalPay = totalget - pointdiscout;
+//         = Globaltotal - pointdiscout;
 
             
-        if (moneycheck.isSelected()) {
-            System.out.println(user.getMoney());
-            if (user.getMoney() <= totalPay) {
-                moneyinstead += user.getMoney();
-                user.setMoney(0);
-            } else {
-                user.setMoney(user.getMoney() - totalPay);
-                moneyinstead += totalPay;
-            }
-        } 
+//        if (moneycheck.isSelected()) {
+//            if (user.getMoney() <= totalPay) {
+//                user.setMoney(0);
+//            } else {
+//                System.out.println(Globaltotal);
+//                user.setMoney(user.getMoney() - totalPay);
+//            }
+//        } 
         
 
         OPD.addOrderCount();
-        OPD.addRevenueCount(totalPay);
-         data.setPointBySelected(username);
-            data.updatedata();
-            data.readdata();
-            Main reto = new Main();
-            reto.show();
-            reto.setLocationRelativeTo(this);
-            reto.setVisible(true);
-            Order.ordermn.dispose();
-            this.dispose();
+        OPD.addRevenueCount(Globaltotal);
+        data.setPointBySelected(username);
+        data.updatedata();
+        data.readdata();
+        Main reto = new Main();
+        reto.show();
+        reto.setLocationRelativeTo(this);
+        reto.setVisible(true);
+        Order.ordermn.dispose();
+        sumorder.cartlista.clearcart();
+        this.dispose();
         
     }//GEN-LAST:event_payActionPerformed
 
     private void pointcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pointcheckActionPerformed
         // TODO add your handling code here:
-              double totalget = 0;
+//        double totalget = 0;
         double pointdiscout = 0 ;
 ;
         User user = data.getSelectuser(username);
         double point = user.getPoint();
-        for (Menu item : cartlista.getcart()) {
-            totalget += item.getPrice(); 
-        }
+//        for (Menu item : cartlista.getcart()) {
+//            totalget += item.getPrice(); 
+//        }
             if (pointcheck.isSelected()) {
                     for (Menu item : cartlista.getcart()) {
-                        if (totalget > item.discout(item.getPrice(), point)) {
+                        if (Globaltotal > item.discout(item.getPrice(), point)) {
                             pointdiscout += item.discout(item.getPrice(), point);
                         } else {
-                            pointdiscout += totalget;
+                            pointdiscout += Globaltotal;
                             break;
                         }
                     }
-        } 
-        double  totalPay = totalget - pointdiscout;
+                        Globaltotal -= pointdiscout;
 
-        if (pointcheck.isSelected()) {
-            pricetotal.setText(totalget+"");
-            discouttotal.setText(pointdiscout+"");
-            total.setText(totalPay+"");
         } else {
-            pricetotal.setText(totalget+"");
-            discouttotal.setText(pointdiscout+"");
-            total.setText(totalPay+"");
-        }
+                for (Menu item : cartlista.getcart()) {
+                        if (Globaltotal > item.discout(item.getPrice(), point)) {
+                            pointdiscout += item.discout(item.getPrice(), point);
+                        } else {
+                            pointdiscout += Globaltotal;
+                            break;
+                        }
+                    }
+                        Globaltotal += pointdiscout;
+                        pointdiscout -= pointdiscout;
+            } 
+
+//        if (pointcheck.isSelected()) {
+//            pricetotal.setText(String.format("%.2f", basepay));
+//            discouttotal.setText(pointdiscout+"");
+//            total.setText(String.format("%.2f", Globaltotal));
+//        } else {
+            pricetotal.setText(String.format("%.2f", basepay));
+            discouttotal.setText(String.format("%.2f", pointdiscout));
+            total.setText(String.format("%.2f", Globaltotal));
+//        }
     }//GEN-LAST:event_pointcheckActionPerformed
 
     private void moneycheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moneycheckActionPerformed
         // TODO add your handling code here:
+        User user = data.getSelectuser(username);
+        double money = user.getMoney();
+//        double moneypay = 0;
+//        for (Menu item : cartlista.getcart()) {
+//            moneypay += item.getPrice();
+//        }
         
+    double basemoney = 0;
+//        double totalpay = Globaltotal;
+        if (moneycheck.isSelected()) {
+            if (money <= Globaltotal) {
+                basemoney += money;
+                 Globaltotal -= money;
+                 money -= money;
+                 ismoneygreater = true;
+            } else {
+                ismoneygreater = false;
+                basemoney += money;
+                money -= Globaltotal;
+                Globaltotal -= Globaltotal; 
+                pointcheck.setEnabled(false);
+                pointcheck.setSelected(false);
+                discouttotal.setText("0");
+            }
+        } else {
+            if (ismoneygreater) {
+                System.out.println("geg");
+                money += basemoney;
+                Globaltotal += money;
+                basemoney -= money;
+//            } 
+//            else if (money <= Globaltotal && pointcheck.isSelected()){
+//                  money += basemoney;
+//                  Globaltotal += 
+            }
+            else {
+                money += Globaltotal;
+                Globaltotal += basepay;
+                pointcheck.setEnabled(true);
+//                Globaltotal -= Globaltotal; 6
+            }
+        }
+        
+            user.setMoney(money);
+            pricetotal.setText(String.format("%.2f", basepay));
+            total.setText(String.format("%.2f", Globaltotal));
+
     }//GEN-LAST:event_moneycheckActionPerformed
 
     /**

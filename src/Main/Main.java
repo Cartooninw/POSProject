@@ -18,20 +18,20 @@ import Data.OPD;
  *
  * @author cart
  */
-public class Main extends javax.swing.JFrame {
+public class Main extends javax.swing.JFrame  {
 
     /**
      * Creates new form Main
      */
-    
     public Main() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
+    
     public static void TimeCheck() {
         LocalTime curTime = LocalTime.now();
         LocalDate curdate =LocalDate.now();
-            DateTimeFormatter formatted = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter formatted = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         if (curTime == LocalTime.MIN) {
 //            LocalDate curdate =LocalDate.now();
 //            DateTimeFormatter formatted = DateTimeFormatter.ofPattern("dd/MM/yyyy");

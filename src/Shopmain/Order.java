@@ -13,6 +13,8 @@ import javax.swing.RowFilter;
 import MainUser.Userinterface;
 import Data.DataBase;
 import Main.Main;
+import MainUser.MultiUserData;
+import MainUser.User;
 /**
  *
  * @author babos
@@ -24,10 +26,15 @@ public class Order extends javax.swing.JFrame  {
     public static Order ordermn;
     ArrayList<Object> usernameob = new ArrayList<>();
     String getusername ;
-    public Order() {
+    public MultiUserData data = new MultiUserData();
+    public Order(String Username) {
         initComponents();
         ordermn = this;
+        
+        discout.setText(0.0 + "");
     }
+    
+    
     public void  Table(ArrayList<String> data) {
         DefaultTableModel table = (DefaultTableModel) items.getModel();
         for (String item : data) {
@@ -161,6 +168,7 @@ public class Order extends javax.swing.JFrame  {
         discout.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         discout.setForeground(new java.awt.Color(255, 255, 255));
         discout.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        discout.setText("sdfds");
         discout.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 5, true));
         discout.setOpaque(true);
 
@@ -339,7 +347,12 @@ public class Order extends javax.swing.JFrame  {
         String name = items.getValueAt(selectedRowIndex, 0).toString();
         String price = items.getValueAt(selectedRowIndex, 1).toString();
         String type = items.getValueAt(selectedRowIndex, 2).toString();
-        
+        data.readdata();
+        User user = data.getSelectuser(getusername);
+        double point = user.getPoint();
+        double pointforshow = 0 ;
+        double Totalprice = 0;
+       
         switch (type) {
             case "FriedFood":
                 sumorder.cartlista.addcart(new FriedFood(name,Double.parseDouble(price)));
@@ -348,6 +361,16 @@ public class Order extends javax.swing.JFrame  {
                 sumorder.cartlista.addcart(new SeaFood(name,Double.parseDouble(price)));
                 break;
         }
+         for (Menu item : sumorder.cartlista.getcart()) { Totalprice += item.getPrice(); }
+        for (Menu item : sumorder.cartlista.getcart()) {
+            if( Totalprice > pointforshow) { 
+                pointforshow += item.discout(item.getPrice(), point);
+            } else {
+                pointforshow += Totalprice;
+                break;
+            }
+                    }
+        discout.setText(String.format("%.2f",pointforshow));
         if (cartmodel.getRowCount() > 0 ) {
                 cartmodel.setRowCount(0);
         }
@@ -371,7 +394,7 @@ public class Order extends javax.swing.JFrame  {
         DefaultTableModel model = (DefaultTableModel) cart.getModel() ;
         model.setRowCount(0);
         sumorder.cartlista.clearcart();
-        
+        discout.setText(0.0+"");
     }//GEN-LAST:event_resetActionPerformed
 
     private void sortseafoodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortseafoodActionPerformed
@@ -437,21 +460,21 @@ public class Order extends javax.swing.JFrame  {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-       
-        //</editor-fold>
-           
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Order().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//       
+//        //</editor-fold>
+//           
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new Order(getusername).setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add;

@@ -99,7 +99,7 @@ public class SelectUserManager extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-                 Order Ordertable = new Order();
+                 Order Ordertable = new Order(username);
                   DataBase read = new DataBase();
                      ArrayList<String> toorderlist = read.readItemData();
                     Ordertable.Table(toorderlist);

@@ -167,6 +167,11 @@ public class MultiUserManager extends javax.swing.JFrame implements Userdata{
         summary.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         summary.setForeground(new java.awt.Color(255, 255, 255));
         summary.setText("Summary");
+        summary.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                summaryActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("sansserif", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 51, 51));
@@ -365,6 +370,11 @@ public class MultiUserManager extends javax.swing.JFrame implements Userdata{
         Calcu.setLocationRelativeTo(null);
                 
     }//GEN-LAST:event_calculatorActionPerformed
+
+    private void summaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_summaryActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_summaryActionPerformed
 
     /**
      * @param args the command line arguments
