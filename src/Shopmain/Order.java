@@ -27,10 +27,9 @@ public class Order extends javax.swing.JFrame  {
     ArrayList<Object> usernameob = new ArrayList<>();
     String getusername ;
     public MultiUserData data = new MultiUserData();
-    public Order(String Username) {
+    public Order( ) {
         initComponents();
         ordermn = this;
-        
         discout.setText(0.0 + "");
     }
     
@@ -52,7 +51,11 @@ public class Order extends javax.swing.JFrame  {
         usernameob.add(username[2].toString());
 
     }
-    
+    public void Guest() {
+                this.getusername = "Guest";
+                username.setText("Guest");
+                jButton1.setEnabled(false);
+    }
     public void setUsername(String tousername) {
         this.getusername = tousername;
         username.setText(tousername);
@@ -168,7 +171,7 @@ public class Order extends javax.swing.JFrame  {
         discout.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         discout.setForeground(new java.awt.Color(255, 255, 255));
         discout.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        discout.setText("sdfds");
+        discout.setText("No Point");
         discout.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 5, true));
         discout.setOpaque(true);
 
@@ -221,7 +224,7 @@ public class Order extends javax.swing.JFrame  {
             }
         });
 
-        username.setText("ForUsername");
+        username.setText("Guest");
 
         jButton2.setBackground(new java.awt.Color(255, 51, 51));
         jButton2.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
@@ -280,7 +283,7 @@ public class Order extends javax.swing.JFrame  {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(username)
-                .addGap(265, 265, 265))
+                .addGap(282, 282, 282))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -331,6 +334,9 @@ public class Order extends javax.swing.JFrame  {
     private void confirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmActionPerformed
         // TODO add your handling code here:
        sumorder newsum = new sumorder();
+       if (getusername.equals("Guest")) {
+           newsum.Guest();
+       }
        newsum.setUsername(getusername);
        newsum.toordertable();
        newsum.show();
@@ -348,11 +354,16 @@ public class Order extends javax.swing.JFrame  {
         String price = items.getValueAt(selectedRowIndex, 1).toString();
         String type = items.getValueAt(selectedRowIndex, 2).toString();
         data.readdata();
-        User user = data.getSelectuser(getusername);
-        double point = user.getPoint();
         double pointforshow = 0 ;
         double Totalprice = 0;
-       
+        double point;
+        try {
+        User user = data.getSelectuser(getusername);
+         point = user.getPoint();
+        } catch (Exception e) {
+            System.out.println("You're Guest!");
+            point = 0;
+        }
         switch (type) {
             case "FriedFood":
                 sumorder.cartlista.addcart(new FriedFood(name,Double.parseDouble(price)));

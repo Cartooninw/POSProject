@@ -97,7 +97,7 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               <Component id="username" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="265" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="282" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -266,7 +266,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="sdfds"/>
+        <Property name="text" type="java.lang.String" value="No Point"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder roundedCorners="true" thickness="5">
@@ -351,7 +351,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="username">
       <Properties>
-        <Property name="text" type="java.lang.String" value="ForUsername"/>
+        <Property name="text" type="java.lang.String" value="Guest"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">

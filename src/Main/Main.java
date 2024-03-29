@@ -14,6 +14,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import Data.DataBase;
 import Data.OPD;
+import java.util.ArrayList;
 /**
  *
  * @author cart
@@ -85,6 +86,11 @@ public class Main extends javax.swing.JFrame  {
 
         jButton2.setBackground(new java.awt.Color(204, 204, 204));
         jButton2.setText("As Guest");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         register.setBackground(new java.awt.Color(51, 51, 255));
         register.setForeground(new java.awt.Color(255, 255, 255));
@@ -152,6 +158,26 @@ public class Main extends javax.swing.JFrame  {
         create.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_loginActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        DataBase read = new DataBase();
+        ArrayList<String> toorderlist = read.readItemData();
+         Order Ordertable = new Order();
+                    Ordertable.Table(toorderlist);
+//                    User userset = Data.getSelectuser(Usernameinput);
+//                    Object[] sendtoorder = {userset.getUsername(),userset.getPoint(),userset.getMoney()};
+     //               System.out.println(sendtoorder[0].toString()+sendtoorder[1].toString()+sendtoorder[2].toString());
+//                    Ordertable.getUserList(sendtoorder);
+//                    Ordertable.setUsername(userset.getUsername());
+                       Ordertable.Guest();
+                    Ordertable.setLocationRelativeTo(this);
+                    Ordertable.show();
+                    Ordertable.setVisible(true);
+                    
+                    this.dispose();
+                    
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

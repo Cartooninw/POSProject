@@ -23,6 +23,7 @@ public class sumorder extends javax.swing.JFrame  {
     public double basepay;
     boolean ismoneygreater ;
     double  totalPay;
+    
     public sumorder() {
         initComponents();
         data.readdata();
@@ -39,6 +40,11 @@ public class sumorder extends javax.swing.JFrame  {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+    
+    public void Guest() {
+        pointcheck.setEnabled(false);
+        moneycheck.setEnabled(false);
     }
     
     public  void toordertable() {
@@ -244,9 +250,15 @@ public class sumorder extends javax.swing.JFrame  {
         // TODO add your handling code here:
 //        double totalget = 0;
         double pointdiscout = 0 ;
-;
-        User user = data.getSelectuser(username);
-        double point = user.getPoint();
+         double point = 0;
+         User user = null;
+        try {
+            user= data.getSelectuser(username);
+            point = user.getPoint();
+        } catch (Exception e) {
+            System.out.println("Guset has no data");
+        }
+        
 //        for (Menu item : cartlista.getcart()) {
 ////            totalget += item.getPrice(); 
 //        }
@@ -283,9 +295,12 @@ public class sumorder extends javax.swing.JFrame  {
 
         OPD.addOrderCount();
         OPD.addRevenueCount(Globaltotal);
+        System.out.println(OPD.getRevenueCount()+OPD.getOrderCount());
+        if (user != null) {
         data.setPointBySelected(username);
         data.updatedata();
         data.readdata();
+        }
         Main reto = new Main();
         reto.show();
         reto.setLocationRelativeTo(this);
