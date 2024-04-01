@@ -9,20 +9,26 @@ import Data.OPD;
 import Main.Main;
 import MainUser.MultiUserData;
 import MainUser.User;
-
+import Data.DataBase;
+import java.util.Map;
+import java.util.HashMap;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 /**
  *
  * @author cart
  */
 public class sumorder extends javax.swing.JFrame  {
-    
+    public DataBase baseManager = new DataBase();
     public static InterOrder cartlista = new InterOrder();
     public MultiUserData data = new MultiUserData(); 
-    public String username ;
+    public String username;
     public double Globaltotal = 0;
     public double basepay;
     boolean ismoneygreater ;
     double  totalPay;
+    Map<Integer,Object> Items = new HashMap<>();
     
     public sumorder() {
         initComponents();
@@ -43,14 +49,18 @@ public class sumorder extends javax.swing.JFrame  {
     }
     
     public void Guest() {
+        this.username = "Guest";
         pointcheck.setEnabled(false);
         moneycheck.setEnabled(false);
     }
     
     public  void toordertable() {
         DefaultTableModel model =  (DefaultTableModel) order.getModel();
+        int count = 0;
         for (Menu item : cartlista.getcart()) {
             Object[] itemto = {item.getName() , item.getPrice() , item.getType()};
+            Items.put(count, itemto);
+                    count ++;
             model.addRow(itemto);
         }
     }
@@ -295,12 +305,37 @@ public class sumorder extends javax.swing.JFrame  {
 
         OPD.addOrderCount();
         OPD.addRevenueCount(Globaltotal);
+        
+        StringBuilder torecord = new StringBuilder();
+        if (username.equals("Guest")) {
+            torecord.append("Guest;");
+        } else {
+            torecord.append(username+";");
+        }
+        
+        Items.forEach((key,item) -> {
+            Object[] array = (Object[]) item;
+            if (key == Items.size() - 1) {
+                torecord.append(String.format("%s-%.2f;", array[0],array[1]));
+            } else {
+                torecord.append(String.format("%s-%.2f/", array[0],array[1]));
+            }
+        });
+        LocalDate datenow = LocalDate.now();
+        DateTimeFormatter formatdate = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter formatdate2 = DateTimeFormatter.ofPattern("ddMMyyyy");
+        torecord.append(Globaltotal+";"+datenow.format(formatdate)+";");
+        torecord.append(datenow.format(formatdate2)+""+Main.recordcountorder+"\n");
+        Main.recordcountorder ++;
+        baseManager.addRecordData(torecord.toString());
+        
         System.out.println(OPD.getRevenueCount()+OPD.getOrderCount());
         if (user != null) {
         data.setPointBySelected(username);
         data.updatedata();
         data.readdata();
         }
+        
         Main reto = new Main();
         reto.show();
         reto.setLocationRelativeTo(this);

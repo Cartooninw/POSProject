@@ -373,6 +373,12 @@ public class MultiUserManager extends javax.swing.JFrame implements Userdata{
 
     private void summaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_summaryActionPerformed
         // TODO add your handling code here:
+        RevenuePage page = new RevenuePage();
+        page.ReadBase();
+        page.show();
+        page.setLocationRelativeTo(null);
+        page.setVisible(true);
+        
         
     }//GEN-LAST:event_summaryActionPerformed
 

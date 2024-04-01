@@ -66,10 +66,9 @@ public class SelfCal extends javax.swing.JFrame {
 
         jLabel1.setText("jLabel1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
 
-        nine.setBackground(new java.awt.Color(255, 255, 255));
         nine.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         nine.setText("9");
         nine.setBorderPainted(false);
@@ -153,7 +152,6 @@ public class SelfCal extends javax.swing.JFrame {
             }
         });
 
-        seven.setBackground(new java.awt.Color(255, 255, 255));
         seven.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         seven.setText("7");
         seven.setBorderPainted(false);
@@ -163,7 +161,6 @@ public class SelfCal extends javax.swing.JFrame {
             }
         });
 
-        eight.setBackground(new java.awt.Color(255, 255, 255));
         eight.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         eight.setText("8");
         eight.setBorderPainted(false);
@@ -173,7 +170,6 @@ public class SelfCal extends javax.swing.JFrame {
             }
         });
 
-        zero.setBackground(new java.awt.Color(255, 255, 255));
         zero.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         zero.setText("0");
         zero.setBorderPainted(false);
@@ -183,7 +179,6 @@ public class SelfCal extends javax.swing.JFrame {
             }
         });
 
-        six.setBackground(new java.awt.Color(255, 255, 255));
         six.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         six.setText("6");
         six.setBorderPainted(false);
@@ -193,7 +188,6 @@ public class SelfCal extends javax.swing.JFrame {
             }
         });
 
-        three.setBackground(new java.awt.Color(255, 255, 255));
         three.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         three.setText("3");
         three.setBorderPainted(false);
@@ -203,7 +197,6 @@ public class SelfCal extends javax.swing.JFrame {
             }
         });
 
-        one.setBackground(new java.awt.Color(255, 255, 255));
         one.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         one.setText("1");
         one.setBorderPainted(false);
@@ -213,7 +206,6 @@ public class SelfCal extends javax.swing.JFrame {
             }
         });
 
-        five.setBackground(new java.awt.Color(255, 255, 255));
         five.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         five.setText("5");
         five.setBorderPainted(false);
@@ -223,7 +215,6 @@ public class SelfCal extends javax.swing.JFrame {
             }
         });
 
-        four.setBackground(new java.awt.Color(255, 255, 255));
         four.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         four.setText("4");
         four.setBorderPainted(false);
@@ -233,7 +224,6 @@ public class SelfCal extends javax.swing.JFrame {
             }
         });
 
-        two.setBackground(new java.awt.Color(255, 255, 255));
         two.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         two.setText("2");
         two.setBorderPainted(false);
@@ -245,7 +235,6 @@ public class SelfCal extends javax.swing.JFrame {
 
         display.setBackground(new java.awt.Color(255, 255, 255));
         display.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        display.setForeground(new java.awt.Color(0, 0, 0));
         display.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         display.setOpaque(true);
 

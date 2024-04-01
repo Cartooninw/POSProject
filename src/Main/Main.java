@@ -24,6 +24,10 @@ public class Main extends javax.swing.JFrame  {
     /**
      * Creates new form Main
      */
+    public static int day ;
+    
+    //use to create code on recorddata by plus one every order in a day till next day coming.
+    public static int recordcountorder = 0;
     public Main() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -32,8 +36,11 @@ public class Main extends javax.swing.JFrame  {
     public static void TimeCheck() {
         LocalTime curTime = LocalTime.now();
         LocalDate curdate =LocalDate.now();
+//        day = curdate.getDayOfMonth();
+        System.out.println(recordcountorder);
         DateTimeFormatter formatted = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         if (curTime == LocalTime.MIN) {
+                    Main.recordcountorder = 0;
 //            LocalDate curdate =LocalDate.now();
 //            DateTimeFormatter formatted = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             new DataBase().writeRevenue(String.format("%s;%s;%s;%s\n", curdate.format(formatted),OPD.getRevenueCount(),OPD.getOrderCount(),OPD.getDiscoutCount()));
@@ -170,7 +177,7 @@ public class Main extends javax.swing.JFrame  {
      //               System.out.println(sendtoorder[0].toString()+sendtoorder[1].toString()+sendtoorder[2].toString());
 //                    Ordertable.getUserList(sendtoorder);
 //                    Ordertable.setUsername(userset.getUsername());
-                       Ordertable.Guest();
+                    Ordertable.Guest();
                     Ordertable.setLocationRelativeTo(this);
                     Ordertable.show();
                     Ordertable.setVisible(true);

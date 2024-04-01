@@ -20,6 +20,21 @@ public class DataBase {
     protected File itemsfile = new File("src/Data/itemlist.txt");
     protected File revenuefile = new File("src/Data/recordRevenue.txt");
     
+    
+    public String LastRecordRevenueLine() {
+        String lastline = "";
+        try {
+                    Scanner sc = new Scanner(revenuefile);
+                    while (sc.hasNextLine()) {
+                        if (sc.nextLine() != "") {
+                            lastline = sc.nextLine();
+                        }
+                    }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return lastline;
+        }
     public void writeRevenue(String tofile) {
         try {
                 FileWriter writen = new FileWriter(this.revenuefile.getAbsolutePath(),true);

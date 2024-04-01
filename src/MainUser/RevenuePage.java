@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package MainUser;
-
+import Data.DataBase;
 /**
  *
  * @author cart
@@ -13,10 +13,18 @@ public class RevenuePage extends javax.swing.JFrame {
     /**
      * Creates new form RevenuePage
      */
+    DataBase Base = new DataBase(); 
     public RevenuePage() {
         initComponents();
     }
     
+    public void ReadBase() {
+        String line = Base.LastRecordRevenueLine();
+        String[] splitline = line.split(";");
+        ordercount.setText(splitline[2]);
+        discoutcout.setText(splitline[3]);
+        revenue.setText(splitline[1]);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -57,6 +65,11 @@ public class RevenuePage extends javax.swing.JFrame {
         jLabel5.setText("Amount of Order with Discout:");
 
         backbtn.setText("Back");
+        backbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backbtnActionPerformed(evt);
+            }
+        });
 
         ordercount.setText("number");
 
@@ -121,6 +134,11 @@ public class RevenuePage extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_backbtnActionPerformed
 
     /**
      * @param args the command line arguments
