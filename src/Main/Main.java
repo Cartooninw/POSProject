@@ -53,8 +53,10 @@ public class Main extends javax.swing.JFrame  {
         ScheduledExecutorService runtime = Executors.newSingleThreadScheduledExecutor();
         
         int delay = 1;
+        
+        // Do TimeCheck()  every {delay} {Seconds} start with 0 delay
         runtime.scheduleAtFixedRate(() -> TimeCheck() , 0, delay, TimeUnit.SECONDS);
-        LocalDate curdate =LocalDate.now();
+//        LocalDate curdate =LocalDate.now();
     }
 
     /**
@@ -69,7 +71,7 @@ public class Main extends javax.swing.JFrame  {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         login = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        Guest = new javax.swing.JButton();
         register = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -91,11 +93,11 @@ public class Main extends javax.swing.JFrame  {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(204, 204, 204));
-        jButton2.setText("As Guest");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        Guest.setBackground(new java.awt.Color(204, 204, 204));
+        Guest.setText("As Guest");
+        Guest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                GuestActionPerformed(evt);
             }
         });
 
@@ -121,7 +123,7 @@ public class Main extends javax.swing.JFrame  {
                             .addComponent(jLabel1)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(175, 175, 175)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Guest, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(43, 43, 43)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -137,7 +139,7 @@ public class Main extends javax.swing.JFrame  {
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Guest, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(register, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -166,7 +168,7 @@ public class Main extends javax.swing.JFrame  {
         this.dispose();
     }//GEN-LAST:event_loginActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void GuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuestActionPerformed
         // TODO add your handling code here:
         DataBase read = new DataBase();
         ArrayList<String> toorderlist = read.readItemData();
@@ -184,7 +186,7 @@ public class Main extends javax.swing.JFrame  {
                     
                     this.dispose();
                     
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_GuestActionPerformed
 
     /**
      * @param args the command line arguments
@@ -225,7 +227,7 @@ public class Main extends javax.swing.JFrame  {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton Guest;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton login;

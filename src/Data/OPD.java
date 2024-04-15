@@ -11,7 +11,7 @@ package Data;
 //order per day.
 public class OPD {
         protected static int OrderCount;
-        protected static double RevenueCount;
+        protected static double RevenueCount = 0 ;
         protected static int DiscoutCount;
 
     public static void addOrderCount() {

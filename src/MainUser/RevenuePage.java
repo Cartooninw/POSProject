@@ -13,7 +13,7 @@ public class RevenuePage extends javax.swing.JFrame {
     /**
      * Creates new form RevenuePage
      */
-    DataBase Base = new DataBase(); 
+    public DataBase Base = new DataBase(); 
     public RevenuePage() {
         initComponents();
     }

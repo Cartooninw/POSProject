@@ -35,7 +35,7 @@ public class DateFilter extends RowFilter {
         String  cellDay= myA.get(0);
         String cellMonth = myA.get(1);
         String  cellYear= myA.get(2);
-        System.out.println(cellDay.contains(searchDay));
+//        System.out.println(cellDay.contains(searchDay));
         
         boolean yearMatches = searchYear.isEmpty() || cellYear.contains(searchYear);
         boolean monthMatches = searchMonth.isEmpty() || cellMonth.contains(searchMonth);

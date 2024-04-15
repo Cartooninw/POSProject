@@ -10,7 +10,7 @@ package MainUser;
  */
 public class SingleUserManager implements Userdata{
     public String Username;
-    User Userdata = Data.getSelectuser(this.Username);
+    public User Userdata = Data.getSelectuser(this.Username);
 //    private double Usermoney = Userdata.getMoney();
 //    private double Userpoint = Userdata.getPoint();
     public SingleUserManager(String Username) {

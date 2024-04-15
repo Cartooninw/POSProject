@@ -31,7 +31,14 @@ public class test {
     public static void main(String[] args) {
        DataBase base = new DataBase();
         String line = base.LastRecordRevenueLine();
-        System.out.println(line);
+//        System.out.println(line);
+                LocalDate curdate =LocalDate.now();
+
+//        DateTimeFormatter formatted = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+//        base.writeRevenue(String.format("%s;%.2s;%s;%s\n", curdate.format(formatted),OPD.getRevenueCount(),OPD.getOrderCount(),OPD.getDiscoutCount()));
+//        
+//    System.out.println(base.LastRecordRevenueLine());
+        
 //        LocalTime curTime = LocalTime.now();
 //        LocalDate curdate =LocalDate.now();
 //        DateTimeFormatter formatted = DateTimeFormatter.ofPattern("dd/MM/yyyy");

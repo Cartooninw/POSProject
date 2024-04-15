@@ -29,6 +29,7 @@ public class sumorder extends javax.swing.JFrame  {
     boolean ismoneygreater ;
     double  totalPay;
     Map<Integer,Object> Items = new HashMap<>();
+    double basemoney = 0;
     
     public sumorder() {
         initComponents();
@@ -262,9 +263,11 @@ public class sumorder extends javax.swing.JFrame  {
         double pointdiscout = 0 ;
          double point = 0;
          User user = null;
+         boolean hasuser = false;
         try {
             user= data.getSelectuser(username);
             point = user.getPoint();
+            hasuser = true;
         } catch (Exception e) {
             System.out.println("Guset has no data");
         }
@@ -285,8 +288,10 @@ public class sumorder extends javax.swing.JFrame  {
                 OPD.addDiscoutCount();
                 user.setPoint(0);
             }
-        } else {
-                
+        } else if (!pointcheck.isSelected() && hasuser){
+//            System.out.println("hello");
+                point += Globaltotal * 0.1;
+                user.setPoint(point);
             }
             
             
@@ -304,7 +309,7 @@ public class sumorder extends javax.swing.JFrame  {
         
 
         OPD.addOrderCount();
-        OPD.addRevenueCount(Globaltotal);
+        OPD.addRevenueCount(Double.parseDouble(String.format("%.3f", Globaltotal)));
         
         StringBuilder torecord = new StringBuilder();
         if (username.equals("Guest")) {
@@ -324,12 +329,12 @@ public class sumorder extends javax.swing.JFrame  {
         LocalDate datenow = LocalDate.now();
         DateTimeFormatter formatdate = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         DateTimeFormatter formatdate2 = DateTimeFormatter.ofPattern("ddMMyyyy");
-        torecord.append(Globaltotal+";"+datenow.format(formatdate)+";");
+        torecord.append(String.format("%.3f", Globaltotal)+";"+datenow.format(formatdate)+";");
         torecord.append(datenow.format(formatdate2)+""+Main.recordcountorder+"\n");
         Main.recordcountorder ++;
         baseManager.addRecordData(torecord.toString());
         
-        System.out.println(OPD.getRevenueCount()+OPD.getOrderCount());
+//        System.out.println(OPD.getRevenueCount()+OPD.getOrderCount());
         if (user != null) {
         data.setPointBySelected(username);
         data.updatedata();
@@ -400,11 +405,12 @@ public class sumorder extends javax.swing.JFrame  {
 //            moneypay += item.getPrice();
 //        }
         
-    double basemoney = 0;
+    
 //        double totalpay = Globaltotal;
         if (moneycheck.isSelected()) {
             if (money < Globaltotal) {
                 basemoney += money;
+                System.out.println(basemoney);
                  Globaltotal -= money;
                  money -= money;
                  ismoneygreater = true;
@@ -419,8 +425,8 @@ public class sumorder extends javax.swing.JFrame  {
             }
         } else {
             if (ismoneygreater) {
-                System.out.println("geg");
                 money += basemoney;
+//                System.out.println(money);
                 Globaltotal += money;
                 basemoney -= money;
 //            } 

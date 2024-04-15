@@ -26,8 +26,8 @@ public class DataBase {
         try {
                     Scanner sc = new Scanner(revenuefile);
                     while (sc.hasNextLine()) {
-                        if (sc.nextLine() != "") {
-                            lastline = sc.nextLine();
+                        if ((lastline = sc.nextLine()) != null) {
+                            System.out.println(lastline);
                         }
                     }
         } catch (Exception e){

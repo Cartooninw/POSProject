@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  * @author cart
  */
-public class Userinterface extends javax.swing.JFrame  implements Userdata{
+public class Userinterface extends javax.swing.JFrame  {
 
     public void showinfo(ArrayList<Object> user) {
         Balance.setText("Your Balance is: "+ user.get(2));
