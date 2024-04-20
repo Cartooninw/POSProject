@@ -1,4 +1,4 @@
-admin;admin;0.0;0.0;admin
+admin;admin;10000;10000.0;admin
 hh;hh;0.0;0.0;Customer
 te;te;0.0;0.0;admin
 sdf;sdf;200.0;0.0;Customer
